@@ -54,7 +54,7 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-# Pods/
+#Pods/
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace
@@ -63,8 +63,8 @@ playground.xcworkspace
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
-
-Carthage/Build/
+#
+#Carthage/Build/
 
 # Accio dependency management
 Dependencies/
@@ -88,3 +88,33 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# OS
+#
+.DS_Store
+
+# Credentials
+#
+Credentials/*
+
+# Builds
+#
+Builds/*
+
+# Empty
+# this empty files are use to require the creation of folder
+!empty
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
