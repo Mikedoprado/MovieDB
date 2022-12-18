@@ -27,6 +27,9 @@
 		FD79180C294F794B0037D0DB /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79180B294F794B0037D0DB /* Creator.swift */; };
 		FD79180E294F795F0037D0DB /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79180D294F795F0037D0DB /* Season.swift */; };
 		FD791810294F79890037D0DB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79180F294F79890037D0DB /* Person.swift */; };
+		FD791814294F7A8A0037D0DB /* TVShowsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791813294F7A8A0037D0DB /* TVShowsFeed.swift */; };
+		FD791816294F7BC10037D0DB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791815294F7BC10037D0DB /* Endpoint.swift */; };
+		FD791818294F7BE60037D0DB /* ApiPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791817294F7BE60037D0DB /* ApiPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		FD79180B294F794B0037D0DB /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		FD79180D294F795F0037D0DB /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		FD79180F294F79890037D0DB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		FD791813294F7A8A0037D0DB /* TVShowsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsFeed.swift; sourceTree = "<group>"; };
+		FD791815294F7BC10037D0DB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		FD791817294F7BE60037D0DB /* ApiPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,11 +172,12 @@
 		FD72AE5E294E267300FED13A /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				FD791806294F72FF0037D0DB /* Models */,
-				FD1FF212294F52CB0006522D /* DesignSystem */,
+				FD791811294F7A3E0037D0DB /* Network */,
 				FD72AE5F294E267300FED13A /* AppDelegate.swift */,
 				FD72AE61294E267300FED13A /* SceneDelegate.swift */,
 				FD72AE63294E267300FED13A /* ViewController.swift */,
+				FD791806294F72FF0037D0DB /* Models */,
+				FD1FF212294F52CB0006522D /* DesignSystem */,
 				FD72AE68294E267400FED13A /* Assets.xcassets */,
 				FD72AE6A294E267400FED13A /* LaunchScreen.storyboard */,
 				FD72AE6D294E267400FED13A /* Info.plist */,
@@ -205,6 +212,24 @@
 				FD79180F294F79890037D0DB /* Person.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FD791811294F7A3E0037D0DB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FD791812294F7A4A0037D0DB /* URLComponents */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FD791812294F7A4A0037D0DB /* URLComponents */ = {
+			isa = PBXGroup;
+			children = (
+				FD791813294F7A8A0037D0DB /* TVShowsFeed.swift */,
+				FD791815294F7BC10037D0DB /* Endpoint.swift */,
+				FD791817294F7BE60037D0DB /* ApiPath.swift */,
+			);
+			path = URLComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD791816294F7BC10037D0DB /* Endpoint.swift in Sources */,
 				FD72AE64294E267300FED13A /* ViewController.swift in Sources */,
 				FD79180A294F79310037D0DB /* TVShowDetails.swift in Sources */,
 				FD79180C294F794B0037D0DB /* Creator.swift in Sources */,
@@ -471,10 +497,12 @@
 				FD79180E294F795F0037D0DB /* Season.swift in Sources */,
 				FD791810294F79890037D0DB /* Person.swift in Sources */,
 				FD1FF21A294F545B0006522D /* MarginSpaces.swift in Sources */,
+				FD791818294F7BE60037D0DB /* ApiPath.swift in Sources */,
 				FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */,
 				FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */,
 				FD1FF216294F53B60006522D /* Icons.swift in Sources */,
 				FD1FF214294F53480006522D /* ProjectColors.swift in Sources */,
+				FD791814294F7A8A0037D0DB /* TVShowsFeed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
