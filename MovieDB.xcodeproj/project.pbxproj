@@ -33,6 +33,8 @@
 		FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79181A294F7D890037D0DB /* UIView+Constraints.swift */; };
 		FD79181D294F7DCC0037D0DB /* StackView+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79181C294F7DCC0037D0DB /* StackView+Custom.swift */; };
 		FD79181F294F7F100037D0DB /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79181E294F7F100037D0DB /* ApiError.swift */; };
+		FD791821294F80D00037D0DB /* EndpointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791820294F80D00037D0DB /* EndpointTest.swift */; };
+		FD791823294F93130037D0DB /* InfoById.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791822294F93130037D0DB /* InfoById.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		FD79181A294F7D890037D0DB /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		FD79181C294F7DCC0037D0DB /* StackView+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Custom.swift"; sourceTree = "<group>"; };
 		FD79181E294F7F100037D0DB /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		FD791820294F80D00037D0DB /* EndpointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTest.swift; sourceTree = "<group>"; };
+		FD791822294F93130037D0DB /* InfoById.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoById.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				FD72AE76294E267400FED13A /* MovieDBTests.swift */,
+				FD791820294F80D00037D0DB /* EndpointTest.swift */,
 			);
 			path = MovieDBTests;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				FD791813294F7A8A0037D0DB /* TVShowsFeed.swift */,
 				FD791815294F7BC10037D0DB /* Endpoint.swift */,
 				FD791817294F7BE60037D0DB /* ApiPath.swift */,
+				FD791822294F93130037D0DB /* InfoById.swift */,
 			);
 			path = URLComponents;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				FD79180C294F794B0037D0DB /* Creator.swift in Sources */,
 				FD1FF218294F54020006522D /* FontSize.swift in Sources */,
 				FD79181F294F7F100037D0DB /* ApiError.swift in Sources */,
+				FD791823294F93130037D0DB /* InfoById.swift in Sources */,
 				FD791808294F73120037D0DB /* TVShow.swift in Sources */,
 				FD79180E294F795F0037D0DB /* Season.swift in Sources */,
 				FD791810294F79890037D0DB /* Person.swift in Sources */,
@@ -530,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD791821294F80D00037D0DB /* EndpointTest.swift in Sources */,
 				FD72AE77294E267400FED13A /* MovieDBTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,7 +758,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24Q6J2H875;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikedoprado.MovieDBTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -771,7 +779,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24Q6J2H875;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikedoprado.MovieDBTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
