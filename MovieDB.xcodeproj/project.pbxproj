@@ -74,6 +74,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD1FF212294F52CB0006522D /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
 		FD72AE53294E267300FED13A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +104,7 @@
 		FD72AE5E294E267300FED13A /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				FD1FF212294F52CB0006522D /* DesignSystem */,
 				FD72AE5F294E267300FED13A /* AppDelegate.swift */,
 				FD72AE61294E267300FED13A /* SceneDelegate.swift */,
 				FD72AE63294E267300FED13A /* ViewController.swift */,
