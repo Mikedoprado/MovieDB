@@ -32,6 +32,7 @@
 		FD791818294F7BE60037D0DB /* ApiPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791817294F7BE60037D0DB /* ApiPath.swift */; };
 		FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79181A294F7D890037D0DB /* UIView+Constraints.swift */; };
 		FD79181D294F7DCC0037D0DB /* StackView+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79181C294F7DCC0037D0DB /* StackView+Custom.swift */; };
+		FD79181F294F7F100037D0DB /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79181E294F7F100037D0DB /* ApiError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		FD791817294F7BE60037D0DB /* ApiPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPath.swift; sourceTree = "<group>"; };
 		FD79181A294F7D890037D0DB /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		FD79181C294F7DCC0037D0DB /* StackView+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Custom.swift"; sourceTree = "<group>"; };
+		FD79181E294F7F100037D0DB /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				FD791812294F7A4A0037D0DB /* URLComponents */,
+				FD79181E294F7F100037D0DB /* ApiError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				FD79180A294F79310037D0DB /* TVShowDetails.swift in Sources */,
 				FD79180C294F794B0037D0DB /* Creator.swift in Sources */,
 				FD1FF218294F54020006522D /* FontSize.swift in Sources */,
+				FD79181F294F7F100037D0DB /* ApiError.swift in Sources */,
 				FD791808294F73120037D0DB /* TVShow.swift in Sources */,
 				FD79180E294F795F0037D0DB /* Season.swift in Sources */,
 				FD791810294F79890037D0DB /* Person.swift in Sources */,
