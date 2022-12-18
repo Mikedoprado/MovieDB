@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FD1FF214294F53480006522D /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1FF213294F53480006522D /* ProjectColors.swift */; };
+		FD1FF216294F53B60006522D /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1FF215294F53B60006522D /* Icons.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE64294E267300FED13A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE63294E267300FED13A /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		FD1FF213294F53480006522D /* ProjectColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectColors.swift; sourceTree = "<group>"; };
+		FD1FF215294F53B60006522D /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1FF213294F53480006522D /* ProjectColors.swift */,
+				FD1FF215294F53B60006522D /* Icons.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				FD72AE64294E267300FED13A /* ViewController.swift in Sources */,
 				FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */,
 				FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */,
+				FD1FF216294F53B60006522D /* Icons.swift in Sources */,
 				FD1FF214294F53480006522D /* ProjectColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
