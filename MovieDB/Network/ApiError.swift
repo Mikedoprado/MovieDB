@@ -13,6 +13,7 @@ enum ApiError: Error {
     case invalidData
     case responseUnsuccesful
     case jsonParsingFailure
+    case unexpectedValuesRepresentation
 }
 
 extension ApiError {
@@ -23,6 +24,7 @@ extension ApiError {
         case .jsonParsingFailure: return "JSON Parsing Failed"
         case .requestFailed: return "Request Failed"
         case .responseUnsuccesful: return "Response Unsuccessful"
+        case .unexpectedValuesRepresentation: return "Unexpected values representation"
         }
     }
 }
