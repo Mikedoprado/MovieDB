@@ -22,6 +22,11 @@
 		FD72AE77294E267400FED13A /* MovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE76294E267400FED13A /* MovieDBTests.swift */; };
 		FD72AE81294E267400FED13A /* MovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE80294E267400FED13A /* MovieDBUITests.swift */; };
 		FD72AE83294E267500FED13A /* MovieDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE82294E267500FED13A /* MovieDBUITestsLaunchTests.swift */; };
+		FD791808294F73120037D0DB /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791807294F73120037D0DB /* TVShow.swift */; };
+		FD79180A294F79310037D0DB /* TVShowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791809294F79310037D0DB /* TVShowDetails.swift */; };
+		FD79180C294F794B0037D0DB /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79180B294F794B0037D0DB /* Creator.swift */; };
+		FD79180E294F795F0037D0DB /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79180D294F795F0037D0DB /* Season.swift */; };
+		FD791810294F79890037D0DB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79180F294F79890037D0DB /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,11 @@
 		FD72AE7C294E267400FED13A /* MovieDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE80294E267400FED13A /* MovieDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBUITests.swift; sourceTree = "<group>"; };
 		FD72AE82294E267500FED13A /* MovieDBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FD791807294F73120037D0DB /* TVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
+		FD791809294F79310037D0DB /* TVShowDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetails.swift; sourceTree = "<group>"; };
+		FD79180B294F794B0037D0DB /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
+		FD79180D294F795F0037D0DB /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		FD79180F294F79890037D0DB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +117,6 @@
 				8C67D603A58A5564E2884D7B /* Pods-MovieDBTests.debug.xcconfig */,
 				F279FAD67D316928AD19D0EF /* Pods-MovieDBTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -157,6 +166,7 @@
 		FD72AE5E294E267300FED13A /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				FD791806294F72FF0037D0DB /* Models */,
 				FD1FF212294F52CB0006522D /* DesignSystem */,
 				FD72AE5F294E267300FED13A /* AppDelegate.swift */,
 				FD72AE61294E267300FED13A /* SceneDelegate.swift */,
@@ -183,6 +193,18 @@
 				FD72AE82294E267500FED13A /* MovieDBUITestsLaunchTests.swift */,
 			);
 			path = MovieDBUITests;
+			sourceTree = "<group>";
+		};
+		FD791806294F72FF0037D0DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FD791807294F73120037D0DB /* TVShow.swift */,
+				FD79180D294F795F0037D0DB /* Season.swift */,
+				FD79180B294F794B0037D0DB /* Creator.swift */,
+				FD791809294F79310037D0DB /* TVShowDetails.swift */,
+				FD79180F294F79890037D0DB /* Person.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,7 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD72AE64294E267300FED13A /* ViewController.swift in Sources */,
+				FD79180A294F79310037D0DB /* TVShowDetails.swift in Sources */,
+				FD79180C294F794B0037D0DB /* Creator.swift in Sources */,
 				FD1FF218294F54020006522D /* FontSize.swift in Sources */,
+				FD791808294F73120037D0DB /* TVShow.swift in Sources */,
+				FD79180E294F795F0037D0DB /* Season.swift in Sources */,
+				FD791810294F79890037D0DB /* Person.swift in Sources */,
 				FD1FF21A294F545B0006522D /* MarginSpaces.swift in Sources */,
 				FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */,
 				FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */,
