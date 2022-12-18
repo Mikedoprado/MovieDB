@@ -11,31 +11,41 @@ import XCTest
 final class EndpointTest: XCTestCase {
 
     func test_init_TVShowFeedEndpoint_URLCreationWithRandomValues() {
-        let sut = TVShowsFeed.allCases.randomElement()
-        let page = Int.random(in: 0..<10)
-        let expectedURLString = "https://api.themoviedb.org\(String(describing: sut!.path))?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=en-US&page=\(page)"
-        let urlComponents = (sut?.getUrlComponents(queryItems: nil, page: page))!
-        let request = sut?.request(urlComponents: urlComponents)
-        
-        XCTAssertEqual(request?.url?.absoluteString, expectedURLString)
+
+        for category in TVShowsFeed.allCases {
+            expect(sut: category, existPage: true)
+        }
+
     }
     
     func test_init_InfoByIdTvShowDetailsEndpoint_URLCreationWithRandomValues() {
-        let sut = InfoById.tvShowDetails(1416)
-        let expectedURLString = "https://api.themoviedb.org\(String(describing: sut.path))?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=en-US"
-        let urlComponents = sut.getUrlComponents(queryItems: nil)
-        let request = sut.request(urlComponents: urlComponents)
+        let sut = InfoById.tvShowDetails(Int.random(in: 1000..<1415))
         
-        XCTAssertEqual(request.url?.absoluteString, expectedURLString)
+        expect(sut: sut, existPage: false)
+
     }
     
     func test_init_InfoByIdTVShowCastEndpoint_URLCreationWithRandomValues() {
-        let sut = InfoById.tvShowCast(1416)
-        let expectedURLString = "https://api.themoviedb.org\(String(describing: sut.path))?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=en-US"
-        let urlComponents = sut.getUrlComponents(queryItems: nil)
+        let sut = InfoById.tvShowCast(Int.random(in: 1000..<1415))
+        
+        expect(sut: sut, existPage: false)
+
+    }
+    
+    // MARK: Helper
+    
+    func expect(sut: Endpoint, existPage: Bool, file: StaticString = #file, line: UInt = #line) {
+        let page = Int.random(in: 0..<10)
+        let expectedURLString = expectedURLString(path: sut.path, existPage: existPage, page: page)
+        let urlComponents = sut.getUrlComponents(queryItems: nil, page: existPage ? page : nil)
         let request = sut.request(urlComponents: urlComponents)
         
-        XCTAssertEqual(request.url?.absoluteString, expectedURLString)
+        XCTAssertEqual(request.url?.absoluteString, expectedURLString, file: file, line: line)
+    }
+    
+    func expectedURLString(path: String, existPage: Bool, page: Int = 1) -> String {
+        let page = existPage ? "&page=\(page)" : ""
+        return "https://api.themoviedb.org\(String(describing: path))?api_key=f6cd5c1a9e6c6b965fdcab0fa6ddd38a&language=en-US\(page)"
     }
 
 }
