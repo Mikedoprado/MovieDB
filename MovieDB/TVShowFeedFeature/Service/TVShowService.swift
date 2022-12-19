@@ -22,7 +22,7 @@ final class TVShowService {
         guard let url = request.url else { return Single.error(ApiError.invalidURL) }
 
         return Single.create { single in
-            self.client.request(from: url) { result in
+            let task = self.client.request(from: url) { result in
                 switch result {
                 case let .success((data, response)):
                     guard
@@ -33,7 +33,7 @@ final class TVShowService {
                     single(.failure(ApiError.jsonParsingFailure))
                 }
             }
-            return Disposables.create()
+            return Disposables.create { task.cancel() }
         }
     }
 }
