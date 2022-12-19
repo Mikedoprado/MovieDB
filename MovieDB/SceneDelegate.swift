@@ -22,10 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     fileprivate func setLaunchViewController(_ window: UIWindow) {
-      let viewController = ViewController()
-      window.rootViewController = viewController
-      self.window = window
-      self.window?.makeKeyAndVisible()
+        let navigationController = UINavigationController()
+        let segmentedController = CategoriesSegmentedController()
+        let viewController = TVShowFeedViewController(segmentedController: segmentedController)
+        navigationController.viewControllers = [viewController]
+        window.rootViewController = navigationController
+        self.window = window
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

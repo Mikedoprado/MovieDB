@@ -26,7 +26,7 @@ extension TVShowsFeed: Endpoint {
         case .popular: return "Popular"
         case .topRated: return "Top Rated"
         case .tvOnTheAir: return "On TV"
-        case .airingToday: return "AiringToday"
+        case .airingToday: return "Airing Today"
         }
     }
 }

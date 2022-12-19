@@ -14,6 +14,8 @@
 		FD1FF216294F53B60006522D /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1FF215294F53B60006522D /* Icons.swift */; };
 		FD1FF218294F54020006522D /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1FF217294F54020006522D /* FontSize.swift */; };
 		FD1FF21A294F545B0006522D /* MarginSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1FF219294F545B0006522D /* MarginSpaces.swift */; };
+		FD2490F12950919F0080CECB /* TVShowFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F02950919F0080CECB /* TVShowFeedViewController.swift */; };
+		FD2490F42950A1F40080CECB /* CategoriesSegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE64294E267300FED13A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE63294E267300FED13A /* ViewController.swift */; };
@@ -85,6 +87,8 @@
 		FD1FF215294F53B60006522D /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		FD1FF217294F54020006522D /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		FD1FF219294F545B0006522D /* MarginSpaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarginSpaces.swift; sourceTree = "<group>"; };
+		FD2490F02950919F0080CECB /* TVShowFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowFeedViewController.swift; sourceTree = "<group>"; };
+		FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSegmentedController.swift; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +195,23 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
+		FD2490EF2950916A0080CECB /* TVShowFeed */ = {
+			isa = PBXGroup;
+			children = (
+				FD2490F22950A1C00080CECB /* Controllers */,
+			);
+			path = TVShowFeed;
+			sourceTree = "<group>";
+		};
+		FD2490F22950A1C00080CECB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FD2490F02950919F0080CECB /* TVShowFeedViewController.swift */,
+				FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		FD72AE53294E267300FED13A = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +237,7 @@
 		FD72AE5E294E267300FED13A /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				FD2490EF2950916A0080CECB /* TVShowFeed */,
 				FD976B9C294FE5FD002B9ACC /* TvShowDetailFeature */,
 				FD791819294F7D740037D0DB /* Extensions */,
 				FD791811294F7A3E0037D0DB /* Network */,
@@ -587,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD976BA3294FE850002B9ACC /* UIColor+toSwfitUIColor.swift in Sources */,
+				FD2490F12950919F0080CECB /* TVShowFeedViewController.swift in Sources */,
 				FD791816294F7BC10037D0DB /* Endpoint.swift in Sources */,
 				FD72AE64294E267300FED13A /* ViewController.swift in Sources */,
 				FD976BB729500618002B9ACC /* PopularityView.swift in Sources */,
@@ -609,6 +632,7 @@
 				FD1FF21A294F545B0006522D /* MarginSpaces.swift in Sources */,
 				FD976BA9295003F4002B9ACC /* CastListView.swift in Sources */,
 				FD791818294F7BE60037D0DB /* ApiPath.swift in Sources */,
+				FD2490F42950A1F40080CECB /* CategoriesSegmentedController.swift in Sources */,
 				FD791830294FD5520037D0DB /* URLSessionHTTPClient.swift in Sources */,
 				FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */,
 				FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */,

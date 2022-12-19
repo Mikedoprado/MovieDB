@@ -5,13 +5,15 @@
 //  Created by Michael Conchado on 18/12/22.
 //
 
-import Foundation
+import UIKit
 
 enum MarginSpaces {
     case horizontalMargin
     case verticalMargin
     case collectionViewHorizontalMargin
     case collectionViewVerticalMargin
+    case sizeWidthScreen
+    case zero
 }
 
 extension MarginSpaces {
@@ -23,6 +25,10 @@ extension MarginSpaces {
             return 20
         case .collectionViewHorizontalMargin, .collectionViewVerticalMargin:
             return 9
+        case .sizeWidthScreen:
+            return UIScreen.main.bounds.width
+        case .zero:
+            return 0
         }
     }
 }

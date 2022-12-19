@@ -22,6 +22,7 @@ enum ProjectColors {
     case black40
     case deepSkyBlue
     case coral
+    case segmentedLinesColor
 }
 
 extension ProjectColors {
@@ -54,6 +55,8 @@ extension ProjectColors {
             return UIColor(red: 10/255, green: 132/255, blue: 1/255, alpha: 1.0)
         case .coral:
             return UIColor(red: 1/255, green: 69/255, blue: 58/255, alpha: 1.0)
+        case .segmentedLinesColor:
+            return UIColor(red: 142/255, green: 142/255, blue: 147/255, alpha: 1.0)
         }
     }
 }
