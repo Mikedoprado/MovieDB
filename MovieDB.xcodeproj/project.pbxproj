@@ -27,6 +27,9 @@
 		FD2491082950B3E00080CECB /* CacheImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491072950B3E00080CECB /* CacheImageView.swift */; };
 		FD24910A2950B42F0080CECB /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491092950B42F0080CECB /* UIView+Loading.swift */; };
 		FD24910E2950D4E70080CECB /* TVShowFeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24910D2950D4E70080CECB /* TVShowFeedCellViewModel.swift */; };
+		FD2491102950F2930080CECB /* TVShowFeedControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24910F2950F2930080CECB /* TVShowFeedControllerViewModel.swift */; };
+		FD249112295100EB0080CECB /* ItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD249111295100EB0080CECB /* ItemMapper.swift */; };
+		FD2491142951013E0080CECB /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE64294E267300FED13A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE63294E267300FED13A /* ViewController.swift */; };
@@ -110,6 +113,9 @@
 		FD2491072950B3E00080CECB /* CacheImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageView.swift; sourceTree = "<group>"; };
 		FD2491092950B42F0080CECB /* UIView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
 		FD24910D2950D4E70080CECB /* TVShowFeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowFeedCellViewModel.swift; sourceTree = "<group>"; };
+		FD24910F2950F2930080CECB /* TVShowFeedControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowFeedControllerViewModel.swift; sourceTree = "<group>"; };
+		FD249111295100EB0080CECB /* ItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMapper.swift; sourceTree = "<group>"; };
+		FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				FD2491042950B3A50080CECB /* CacheImage */,
+				FD249111295100EB0080CECB /* ItemMapper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -260,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				FD24910D2950D4E70080CECB /* TVShowFeedCellViewModel.swift */,
+				FD24910F2950F2930080CECB /* TVShowFeedControllerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -375,6 +383,7 @@
 				FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */,
 				FD2490FD2950AA760080CECB /* UIView+Identifier.swift */,
 				FD2491092950B42F0080CECB /* UIView+Loading.swift */,
+				FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -675,6 +684,7 @@
 				FD791816294F7BC10037D0DB /* Endpoint.swift in Sources */,
 				FD72AE64294E267300FED13A /* ViewController.swift in Sources */,
 				FD976BB729500618002B9ACC /* PopularityView.swift in Sources */,
+				FD2491102950F2930080CECB /* TVShowFeedControllerViewModel.swift in Sources */,
 				FD79180A294F79310037D0DB /* TVShowDetails.swift in Sources */,
 				FD79180C294F794B0037D0DB /* Creator.swift in Sources */,
 				FD976BA7295003C9002B9ACC /* SummaryView.swift in Sources */,
@@ -714,6 +724,8 @@
 				FD24910A2950B42F0080CECB /* UIView+Loading.swift in Sources */,
 				FD2490FC2950A8250080CECB /* LabelBuilder.swift in Sources */,
 				FD24910E2950D4E70080CECB /* TVShowFeedCellViewModel.swift in Sources */,
+				FD249112295100EB0080CECB /* ItemMapper.swift in Sources */,
+				FD2491142951013E0080CECB /* HTTPURLResponse+StatusCode.swift in Sources */,
 				FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
