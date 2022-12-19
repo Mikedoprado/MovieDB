@@ -9,9 +9,13 @@ import UIKit
 import RxSwift
 
 final class TVShowFeedViewController: UIViewController {
+    
+    private struct K {
+        static let navigationTitle: String = "TV Shows"
+    }
 
-    private var segmentedController: UIViewController
-//    private var collectionViewController: UIViewController
+    private var segmentedController: CategoriesSegmentedController
+    private var collectionViewController: TVShowsCollectionView
     private let scrollView = UIScrollView()
     
     let buttonMenu = ButtonBuilder()
@@ -22,11 +26,12 @@ final class TVShowFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        title = "TV Shows"
+        title = K.navigationTitle
     }
     
-    init(segmentedController: UIViewController) {
+    init(segmentedController: CategoriesSegmentedController, collectionViewController: TVShowsCollectionView) {
         self.segmentedController = segmentedController
+        self.collectionViewController = collectionViewController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,13 +50,14 @@ final class TVShowFeedViewController: UIViewController {
             bottom: view.bottomAnchor,
             trailing: view.trailingAnchor)
         
-        [ segmentedController ].forEach { addChild($0) }
+        [ segmentedController, collectionViewController ].forEach { addChild($0) }
         segmentedController.didMove(toParent: self)
+        collectionViewController.didMove(toParent: self)
         
         let stackHome = CustomStackView(
             arrangedSubviews: [
-                segmentedController.view
-                // segmentedController and FeedController
+                segmentedController.view,
+                collectionViewController.view
             ], spacing: 14, orientation: .vertical)
         
         stackHome.constrainWidth(constant: MarginSpaces.sizeWidthScreen.space - (MarginSpaces.horizontalMargin.space))

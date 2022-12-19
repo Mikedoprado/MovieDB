@@ -20,6 +20,7 @@
 		FD2490F82950A51C0080CECB /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F72950A51C0080CECB /* ButtonBuilder.swift */; };
 		FD2490FA2950A7B60080CECB /* TVShowsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F92950A7B60080CECB /* TVShowsCollectionView.swift */; };
 		FD2490FC2950A8250080CECB /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490FB2950A8250080CECB /* LabelBuilder.swift */; };
+		FD2490FE2950AA760080CECB /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490FD2950AA760080CECB /* UIView+Identifier.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE64294E267300FED13A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE63294E267300FED13A /* ViewController.swift */; };
@@ -97,6 +98,7 @@
 		FD2490F72950A51C0080CECB /* ButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
 		FD2490F92950A7B60080CECB /* TVShowsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsCollectionView.swift; sourceTree = "<group>"; };
 		FD2490FB2950A8250080CECB /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
+		FD2490FD2950AA760080CECB /* UIView+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				FD79181A294F7D890037D0DB /* UIView+Constraints.swift */,
 				FD79181C294F7DCC0037D0DB /* StackView+Custom.swift */,
 				FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */,
+				FD2490FD2950AA760080CECB /* UIView+Identifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				FD791808294F73120037D0DB /* TVShow.swift in Sources */,
 				FD976BB5295005D9002B9ACC /* PosterView.swift in Sources */,
 				FD79180E294F795F0037D0DB /* Season.swift in Sources */,
+				FD2490FE2950AA760080CECB /* UIView+Identifier.swift in Sources */,
 				FD976BB329500516002B9ACC /* SeasonView.swift in Sources */,
 				FD791810294F79890037D0DB /* Person.swift in Sources */,
 				FD79181D294F7DCC0037D0DB /* StackView+Custom.swift in Sources */,
