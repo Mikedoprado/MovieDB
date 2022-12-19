@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TVShowDetails {
+struct TVShowDetails: Decodable  {
     var id: Int
     var backdropPath: String?
     var overview: String

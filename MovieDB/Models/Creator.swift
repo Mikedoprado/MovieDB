@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Creator {
+struct Creator: Decodable  {
     var name: String
 }
 
-struct CreatorList {
+struct CreatorList: Decodable  {
     var createdBy: [Creator]
 }

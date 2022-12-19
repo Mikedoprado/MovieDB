@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Season {
+struct Season: Decodable  {
     var posterPath: String
     var seasonNumber: Int
     var airDate: String
     var name: String
 }
 
-struct SeasonList {
+struct SeasonList: Decodable  {
     var seasons: [Season]
 }

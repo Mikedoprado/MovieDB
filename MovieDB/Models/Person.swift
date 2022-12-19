@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Person {
+struct Person: Decodable {
     var name: String
     var posterPath: String
 }
 
-struct Cast {
+struct Cast: Decodable {
     var cast: [Person]
 }

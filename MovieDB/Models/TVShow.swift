@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TVShow {
+struct TVShow: Decodable  {
     var id: Int
     var name: String
     var voteAverage: CGFloat
@@ -16,6 +16,6 @@ struct TVShow {
     var overview: String
 }
 
-struct TVShowList {
+struct TVShowList: Decodable  {
     var results: [TVShow]
 }
