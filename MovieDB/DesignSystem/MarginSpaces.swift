@@ -13,6 +13,7 @@ enum MarginSpaces {
     case collectionViewHorizontalMargin
     case collectionViewVerticalMargin
     case sizeWidthScreen
+    case horizontalCellMargin
     case zero
 }
 
@@ -27,6 +28,8 @@ extension MarginSpaces {
             return 9
         case .sizeWidthScreen:
             return UIScreen.main.bounds.width
+        case .horizontalCellMargin:
+            return 8
         case .zero:
             return 0
         }

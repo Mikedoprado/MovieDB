@@ -9,14 +9,14 @@ import UIKit
 
 class CacheImageView: UIImageView {
     
-    var imageCache: NSCache<NSString, DiscardableImageCacheItem> {
+    private var imageCache: NSCache<NSString, DiscardableImageCacheItem> {
         let cache = NSCache<NSString, DiscardableImageCacheItem>()
         cache.countLimit = 20
         cache.totalCostLimit = 200
         return cache
     }
     
-    var activityIndicator: UIActivityIndicatorView = {
+    private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .large
         return activityIndicator
@@ -26,7 +26,7 @@ class CacheImageView: UIImageView {
     
     var emptyImage: UIImage?
     
-    public func loadImage(urlString: String?, completion: (() -> Void)? = nil) {
+    private func loadImage(urlString: String?, completion: (() -> Void)? = nil) {
         self.showLoading(view: &activityIndicator)
         image = nil
         
@@ -46,7 +46,6 @@ class CacheImageView: UIImageView {
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
-            
             guard let data = data, error == nil else { return }
             
             DispatchQueue.main.async { [weak self] in

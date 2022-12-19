@@ -218,12 +218,13 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
-		FD2490EF2950916A0080CECB /* TVShowFeed */ = {
+		FD2490EF2950916A0080CECB /* TVShowFeedFeature */ = {
 			isa = PBXGroup;
 			children = (
+				FD24910B2950BBEE0080CECB /* ViewModels */,
 				FD2490F22950A1C00080CECB /* Controllers */,
 			);
-			path = TVShowFeed;
+			path = TVShowFeedFeature;
 			sourceTree = "<group>";
 		};
 		FD2490F22950A1C00080CECB /* Controllers */ = {
@@ -255,6 +256,13 @@
 			path = CacheImage;
 			sourceTree = "<group>";
 		};
+		FD24910B2950BBEE0080CECB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		FD72AE53294E267300FED13A = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				FD2491032950B39C0080CECB /* Helpers */,
-				FD2490EF2950916A0080CECB /* TVShowFeed */,
+				FD2490EF2950916A0080CECB /* TVShowFeedFeature */,
 				FD976B9C294FE5FD002B9ACC /* TvShowDetailFeature */,
 				FD791819294F7D740037D0DB /* Extensions */,
 				FD791811294F7A3E0037D0DB /* Network */,
