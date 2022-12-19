@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     fileprivate func setLaunchViewController(_ window: UIWindow) {
-        let navigationController = UINavigationController()
+        let navigationController = MovieDBNavigationController()
         let segmentedController = CategoriesSegmentedController()
         let viewController = TVShowFeedViewController(segmentedController: segmentedController)
         navigationController.viewControllers = [viewController]
