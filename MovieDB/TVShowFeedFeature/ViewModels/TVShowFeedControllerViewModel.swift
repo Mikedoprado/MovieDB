@@ -29,7 +29,7 @@ final class TVShowFeedControllerViewModel: TVShowFeedControllerViewModelProtocol
     struct Input {
         let viewDidLoad: Observable<Void>
         let didScrollTVShows: ControlEvent<(cell: UICollectionViewCell, at: IndexPath)>
-        let segmentedControlValueChange: ControlEvent<UIControl.Event>
+        let segmentedControlValueChange: ControlProperty<Int>
     }
     
     struct Output {
