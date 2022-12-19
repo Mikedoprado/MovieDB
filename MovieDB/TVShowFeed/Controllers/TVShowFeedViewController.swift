@@ -16,6 +16,11 @@ final class TVShowFeedViewController: UIViewController {
 //    private var collectionViewController: UIViewController
     private let scrollView = UIScrollView()
     
+    let buttonMenu = ButtonBuilder()
+        .setTintColor(color: .white)
+        .setSystemImage(named: Icons.menu.systemIcon, of: .headline, allStates: true)
+        .build()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -32,7 +37,7 @@ final class TVShowFeedViewController: UIViewController {
     }
     
     private func setUI() {
-    
+        setupNavigationButtons()
         view.backgroundColor = ProjectColors.almostBlack.color
         view.addSubview(scrollView)
         
@@ -67,6 +72,11 @@ final class TVShowFeedViewController: UIViewController {
                     bottom: MarginSpaces.zero.space,
                     right: MarginSpaces.collectionViewHorizontalMargin.space))
 
+    }
+    
+    private func setupNavigationButtons() {
+        let rightBarButtonMenu = UIBarButtonItem(customView: buttonMenu)
+        navigationItem.rightBarButtonItems = [rightBarButtonMenu]
     }
     
 }

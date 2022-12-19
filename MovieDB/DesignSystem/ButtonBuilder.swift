@@ -101,7 +101,7 @@ final class ButtonBuilder {
     }
     
     @discardableResult
-    func fontStyle(textStyle: TextStyle, weight: UIFont.Weight = .regular) -> ButtonBuilder {
+    func fontStyle(textStyle: FontSize, weight: UIFont.Weight = .regular) -> ButtonBuilder {
         button.titleLabel?.font = .systemFont(ofSize: textStyle.size, weight: weight)
         return self
     }

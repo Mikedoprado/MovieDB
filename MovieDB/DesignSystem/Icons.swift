@@ -8,7 +8,7 @@
 import Foundation
 
 enum Icons {
-    case star, heart
+    case star, heart, menu
 }
 
 extension Icons {
@@ -18,6 +18,8 @@ extension Icons {
             return "star.fill"
         case .heart:
             return  "heart"
+        case .menu:
+            return "list.bullet"
         }
     }
 }
