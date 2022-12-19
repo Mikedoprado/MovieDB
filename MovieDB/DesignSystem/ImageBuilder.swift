@@ -9,7 +9,7 @@ import UIKit
 
 final class ImageBuilder {
     
-    private var image = UIImageView()
+    private var image = CacheImageView()
     
     @discardableResult
     func sizeAndAspectImage(width: CGFloat, height: CGFloat, aspectRatio: UIView.ContentMode ) -> ImageBuilder {
@@ -79,6 +79,13 @@ final class ImageBuilder {
     @discardableResult
     func isHidden(_ isHidden: Bool) -> ImageBuilder {
         image.isHidden = isHidden
+        return self
+    }
+    
+    @discardableResult
+    func setPlaceHolder(image: UIImage?) -> ImageBuilder {
+        guard let placeholder = image else { return self }
+        self.image.emptyImage = placeholder
         return self
     }
 

@@ -22,6 +22,10 @@
 		FD2490FC2950A8250080CECB /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490FB2950A8250080CECB /* LabelBuilder.swift */; };
 		FD2490FE2950AA760080CECB /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490FD2950AA760080CECB /* UIView+Identifier.swift */; };
 		FD2491002950B1F00080CECB /* ImageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490FF2950B1F00080CECB /* ImageBuilder.swift */; };
+		FD2491022950B24D0080CECB /* TVShowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491012950B24D0080CECB /* TVShowCollectionViewCell.swift */; };
+		FD2491062950B3C10080CECB /* DiscardableImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491052950B3C10080CECB /* DiscardableImageItem.swift */; };
+		FD2491082950B3E00080CECB /* CacheImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491072950B3E00080CECB /* CacheImageView.swift */; };
+		FD24910A2950B42F0080CECB /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491092950B42F0080CECB /* UIView+Loading.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE64294E267300FED13A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE63294E267300FED13A /* ViewController.swift */; };
@@ -101,6 +105,10 @@
 		FD2490FB2950A8250080CECB /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
 		FD2490FD2950AA760080CECB /* UIView+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
 		FD2490FF2950B1F00080CECB /* ImageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBuilder.swift; sourceTree = "<group>"; };
+		FD2491012950B24D0080CECB /* TVShowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCollectionViewCell.swift; sourceTree = "<group>"; };
+		FD2491052950B3C10080CECB /* DiscardableImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscardableImageItem.swift; sourceTree = "<group>"; };
+		FD2491072950B3E00080CECB /* CacheImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageView.swift; sourceTree = "<group>"; };
+		FD2491092950B42F0080CECB /* UIView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,8 +233,26 @@
 				FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */,
 				FD2490F52950A2F90080CECB /* MovieDBNavigationController.swift */,
 				FD2490F92950A7B60080CECB /* TVShowsCollectionView.swift */,
+				FD2491012950B24D0080CECB /* TVShowCollectionViewCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FD2491032950B39C0080CECB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FD2491042950B3A50080CECB /* CacheImage */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FD2491042950B3A50080CECB /* CacheImage */ = {
+			isa = PBXGroup;
+			children = (
+				FD2491052950B3C10080CECB /* DiscardableImageItem.swift */,
+				FD2491072950B3E00080CECB /* CacheImageView.swift */,
+			);
+			path = CacheImage;
 			sourceTree = "<group>";
 		};
 		FD72AE53294E267300FED13A = {
@@ -254,6 +280,7 @@
 		FD72AE5E294E267300FED13A /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				FD2491032950B39C0080CECB /* Helpers */,
 				FD2490EF2950916A0080CECB /* TVShowFeed */,
 				FD976B9C294FE5FD002B9ACC /* TvShowDetailFeature */,
 				FD791819294F7D740037D0DB /* Extensions */,
@@ -331,6 +358,7 @@
 				FD79181C294F7DCC0037D0DB /* StackView+Custom.swift */,
 				FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */,
 				FD2490FD2950AA760080CECB /* UIView+Identifier.swift */,
+				FD2491092950B42F0080CECB /* UIView+Loading.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -651,6 +679,7 @@
 				FD791810294F79890037D0DB /* Person.swift in Sources */,
 				FD2491002950B1F00080CECB /* ImageBuilder.swift in Sources */,
 				FD79181D294F7DCC0037D0DB /* StackView+Custom.swift in Sources */,
+				FD2491062950B3C10080CECB /* DiscardableImageItem.swift in Sources */,
 				FD1FF21A294F545B0006522D /* MarginSpaces.swift in Sources */,
 				FD976BA9295003F4002B9ACC /* CastListView.swift in Sources */,
 				FD791818294F7BE60037D0DB /* ApiPath.swift in Sources */,
@@ -659,11 +688,14 @@
 				FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */,
 				FD2490F62950A2F90080CECB /* MovieDBNavigationController.swift in Sources */,
 				FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */,
+				FD2491022950B24D0080CECB /* TVShowCollectionViewCell.swift in Sources */,
 				FD1FF216294F53B60006522D /* Icons.swift in Sources */,
 				FD1FF214294F53480006522D /* ProjectColors.swift in Sources */,
 				FD791814294F7A8A0037D0DB /* TVShowsFeed.swift in Sources */,
+				FD2491082950B3E00080CECB /* CacheImageView.swift in Sources */,
 				FD976BB1295004E1002B9ACC /* DescriptionView.swift in Sources */,
 				FD976B9F294FE632002B9ACC /* TVShowDetailView.swift in Sources */,
+				FD24910A2950B42F0080CECB /* UIView+Loading.swift in Sources */,
 				FD2490FC2950A8250080CECB /* LabelBuilder.swift in Sources */,
 				FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */,
 			);
