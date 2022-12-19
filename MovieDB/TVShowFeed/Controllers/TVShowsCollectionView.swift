@@ -7,10 +7,6 @@
 
 import UIKit
 
-final class TVShowCollectionViewCell: UICollectionViewCell {
-    
-}
-
 final class TVShowsCollectionView: UIViewController {
     
     private struct K {
