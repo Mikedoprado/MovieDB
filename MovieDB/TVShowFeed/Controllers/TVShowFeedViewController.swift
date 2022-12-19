@@ -8,8 +8,6 @@
 import UIKit
 import RxSwift
 
-
-
 final class TVShowFeedViewController: UIViewController {
 
     private var segmentedController: UIViewController

@@ -18,6 +18,8 @@
 		FD2490F42950A1F40080CECB /* CategoriesSegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */; };
 		FD2490F62950A2F90080CECB /* MovieDBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F52950A2F90080CECB /* MovieDBNavigationController.swift */; };
 		FD2490F82950A51C0080CECB /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F72950A51C0080CECB /* ButtonBuilder.swift */; };
+		FD2490FA2950A7B60080CECB /* TVShowsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490F92950A7B60080CECB /* TVShowsCollectionView.swift */; };
+		FD2490FC2950A8250080CECB /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2490FB2950A8250080CECB /* LabelBuilder.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE64294E267300FED13A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE63294E267300FED13A /* ViewController.swift */; };
@@ -93,6 +95,8 @@
 		FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSegmentedController.swift; sourceTree = "<group>"; };
 		FD2490F52950A2F90080CECB /* MovieDBNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBNavigationController.swift; sourceTree = "<group>"; };
 		FD2490F72950A51C0080CECB /* ButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
+		FD2490F92950A7B60080CECB /* TVShowsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsCollectionView.swift; sourceTree = "<group>"; };
+		FD2490FB2950A8250080CECB /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				FD1FF217294F54020006522D /* FontSize.swift */,
 				FD1FF219294F545B0006522D /* MarginSpaces.swift */,
 				FD2490F72950A51C0080CECB /* ButtonBuilder.swift */,
+				FD2490FB2950A8250080CECB /* LabelBuilder.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				FD2490F02950919F0080CECB /* TVShowFeedViewController.swift */,
 				FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */,
 				FD2490F52950A2F90080CECB /* MovieDBNavigationController.swift */,
+				FD2490F92950A7B60080CECB /* TVShowsCollectionView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				FD791825294FA43E0037D0DB /* HTTPClient.swift in Sources */,
 				FD2490F82950A51C0080CECB /* ButtonBuilder.swift in Sources */,
 				FD976BAB29500445002B9ACC /* PersonView.swift in Sources */,
+				FD2490FA2950A7B60080CECB /* TVShowsCollectionView.swift in Sources */,
 				FD791823294F93130037D0DB /* InfoById.swift in Sources */,
 				FD791808294F73120037D0DB /* TVShow.swift in Sources */,
 				FD976BB5295005D9002B9ACC /* PosterView.swift in Sources */,
@@ -649,6 +656,7 @@
 				FD791814294F7A8A0037D0DB /* TVShowsFeed.swift in Sources */,
 				FD976BB1295004E1002B9ACC /* DescriptionView.swift in Sources */,
 				FD976B9F294FE632002B9ACC /* TVShowDetailView.swift in Sources */,
+				FD2490FC2950A8250080CECB /* LabelBuilder.swift in Sources */,
 				FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
