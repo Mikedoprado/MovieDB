@@ -7,10 +7,6 @@
 
 import UIKit
 
-final class TVShowFeedCellViewModel {
-    
-}
-
 final class TVShowCollectionViewCell: UICollectionViewCell {
     
     private struct K {
@@ -18,24 +14,14 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         static let titleLines: Int = 2
         static let defaultNumberLines: Int = 1
         static let overviewLines: Int = 4
-        static let iconSize: CGFloat = 16
-        static let posterHeight: CGFloat = 230
+        static let iconSize: CGFloat = 10
+        static let posterHeight: CGFloat = 200
     }
     
-    var viewModel: TVShowFeedCellViewModel? {
+    var viewModel: TVShowFeedViewModelProtocol? {
         didSet {
-            
+            setUI()
         }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private var poster = ImageBuilder()
@@ -63,6 +49,7 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         .build()
     
     private var starIcon = ImageBuilder()
+        .sizeAndAspectImage(width: 16, height: 16, aspectRatio: .scaleAspectFit)
         .systemImage(iconName: Icons.star.systemIcon, color: .algaeGreen, size: K.iconSize)
         .build()
     
@@ -73,7 +60,18 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         .clipToBounds()
         .build()
     
+    func setData() {
+        tvShowTitle.text = viewModel?.name
+        tvShowDate.text = viewModel?.date
+        overview.text = viewModel?.overview
+        popularity.text = viewModel?.voteAverage
+        
+    }
+    
     func setUI() {
+        setData()
+        contentView.layer.cornerRadius = 10
+        contentView.clipsToBounds = true
         [poster, tvShowTitle, overview].forEach { [weak self] in
             self?.contentView.addSubview($0)
         }
@@ -97,23 +95,36 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
                 bottom: MarginSpaces.zero.space,
                 right: MarginSpaces.zero.space))
         
+        let stackViewRating = CustomStackView(arrangedSubviews: [UIView(), starIcon, popularity], spacing: 5, orientation: .horizontal)
+        
         let stackDatePopularity = CustomStackView(
-            arrangedSubviews: [tvShowDate, UIView(), popularity], orientation: .horizontal)
+            arrangedSubviews: [tvShowDate, UIView(), stackViewRating], orientation: .horizontal)
+        stackDatePopularity.distribution = .fillProportionally
+        stackDatePopularity.alignment = .center
         
         contentView.addSubview(stackDatePopularity)
         
-        [stackDatePopularity, overview].forEach {
-            $0.anchor(
-                top: tvShowTitle.bottomAnchor,
-                leading: contentView.leadingAnchor,
-                bottom: nil,
-                trailing: contentView.trailingAnchor,
-                padding: .init(
-                    top: MarginSpaces.collectionViewVerticalMargin.space,
-                    left: MarginSpaces.horizontalCellMargin.space,
-                    bottom: MarginSpaces.zero.space,
-                    right: MarginSpaces.horizontalCellMargin.space))
-        }
+        stackDatePopularity.anchor(
+            top: tvShowTitle.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil,
+            trailing: contentView.trailingAnchor,
+            padding: .init(
+                top: MarginSpaces.collectionViewVerticalMargin.space,
+                left: MarginSpaces.horizontalCellMargin.space,
+                bottom: MarginSpaces.zero.space,
+                right: MarginSpaces.horizontalCellMargin.space))
+        
+        overview.anchor(
+            top: stackDatePopularity.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil,
+            trailing: contentView.trailingAnchor,
+            padding: .init(
+                top: MarginSpaces.collectionViewVerticalMargin.space,
+                left: MarginSpaces.horizontalCellMargin.space,
+                bottom: MarginSpaces.zero.space,
+                right: MarginSpaces.horizontalCellMargin.space))
     }
     
     override func prepareForReuse() {

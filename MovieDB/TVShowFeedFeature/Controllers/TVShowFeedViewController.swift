@@ -69,7 +69,7 @@ final class TVShowFeedViewController: UIViewController {
             .anchor(
                 top: scrollView.topAnchor,
                 leading: scrollView.leadingAnchor,
-                bottom: scrollView.bottomAnchor,
+                bottom: view.bottomAnchor,
                 trailing: scrollView.trailingAnchor,
                 padding: .init(
                     top: MarginSpaces.collectionViewHorizontalMargin.space,

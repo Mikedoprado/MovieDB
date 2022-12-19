@@ -10,12 +10,12 @@ import UIKit
 final class TVShowsCollectionView: UIViewController {
     
     private struct K {
-        static let itemHeight: CGFloat = 300
+        static let itemHeight: CGFloat = 320
     }
     
     var collectionView: UICollectionView?
 
-    private let itemLayoutWidth = MarginSpaces.sizeWidthScreen.space / 2 - (MarginSpaces.collectionViewHorizontalMargin.space * 2)
+    private let itemLayoutWidth = MarginSpaces.sizeWidthScreen.space / 2.45
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -26,12 +26,7 @@ final class TVShowsCollectionView: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
+
     private func setLayoutCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(

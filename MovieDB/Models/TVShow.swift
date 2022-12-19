@@ -8,10 +8,11 @@
 import Foundation
 
 struct TVShow {
+    var id: Int
     var name: String
-    var popularity: CGFloat
-    var releaseDate: String
-    var posterPath: String
+    var voteAverage: CGFloat
+    var firstAirDate: String
+    var posterPath: String?
     var overview: String
 }
 

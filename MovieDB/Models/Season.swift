@@ -8,7 +8,7 @@
 import Foundation
 
 struct Season {
-    var poster: String
+    var posterPath: String
     var seasonNumber: Int
     var airDate: String
     var name: String
