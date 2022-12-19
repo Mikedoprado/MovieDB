@@ -230,11 +230,11 @@
 		FD2490F22950A1C00080CECB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FD24910C2950BF5D0080CECB /* CollectionViewCell */,
 				FD2490F02950919F0080CECB /* TVShowFeedViewController.swift */,
 				FD2490F32950A1F40080CECB /* CategoriesSegmentedController.swift */,
 				FD2490F52950A2F90080CECB /* MovieDBNavigationController.swift */,
 				FD2490F92950A7B60080CECB /* TVShowsCollectionView.swift */,
-				FD2491012950B24D0080CECB /* TVShowCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,6 +261,14 @@
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FD24910C2950BF5D0080CECB /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FD2491012950B24D0080CECB /* TVShowCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		FD72AE53294E267300FED13A = {
