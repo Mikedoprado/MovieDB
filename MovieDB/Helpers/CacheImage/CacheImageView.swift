@@ -26,7 +26,7 @@ class CacheImageView: UIImageView {
     
     var emptyImage: UIImage?
     
-    private func loadImage(urlString: String?, completion: (() -> Void)? = nil) {
+    func loadImage(urlString: String?, completion: (() -> Void)? = nil) {
         self.showLoading(view: &activityIndicator)
         image = nil
         

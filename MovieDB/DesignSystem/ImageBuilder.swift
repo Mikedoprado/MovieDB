@@ -9,7 +9,7 @@ import UIKit
 
 final class ImageBuilder {
     
-    private var image = CacheImageView()
+    var image = CacheImageView()
     
     @discardableResult
     func sizeAndAspectImage(width: CGFloat, height: CGFloat, aspectRatio: UIView.ContentMode ) -> ImageBuilder {
@@ -95,7 +95,7 @@ final class ImageBuilder {
         return self
     }
     
-    func build() -> UIImageView {
+    func build() -> CacheImageView {
         return image
     }
 }

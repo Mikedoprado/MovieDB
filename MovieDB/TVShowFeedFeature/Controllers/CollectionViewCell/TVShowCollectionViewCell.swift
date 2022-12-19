@@ -60,15 +60,15 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         .clipToBounds()
         .build()
     
-    func setData() {
+    private func setData() {
         tvShowTitle.text = viewModel?.name
         tvShowDate.text = viewModel?.date
         overview.text = viewModel?.overview
         popularity.text = viewModel?.voteAverage
-        
+        poster.loadImage(urlString: viewModel?.poster)
     }
     
-    func setUI() {
+    private func setUI() {
         setData()
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true

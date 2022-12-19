@@ -8,7 +8,7 @@
 protocol TVShowFeedViewModelProtocol {
     var tvShow: TVShow { get }
     var date: String { get }
-    var poster: String { get }
+    var poster: String? { get }
     var overview: String { get }
     var name: String { get }
     var voteAverage: String { get }
@@ -26,8 +26,9 @@ final class TVShowFeedCellViewModel: TVShowFeedViewModelProtocol {
         tvShow.firstAirDate
     }
     
-    var poster: String {
-        ""
+    var poster: String? {
+        guard let image = tvShow.posterPath else { return "notFoundImage" }
+        return ApiPath.baseURLImage.path + image
     }
     
     var overview: String {
