@@ -30,6 +30,7 @@
 		FD2491102950F2930080CECB /* TVShowFeedControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24910F2950F2930080CECB /* TVShowFeedControllerViewModel.swift */; };
 		FD249112295100EB0080CECB /* ItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD249111295100EB0080CECB /* ItemMapper.swift */; };
 		FD2491142951013E0080CECB /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */; };
+		FD249117295106B40080CECB /* TVShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD249116295106B40080CECB /* TVShowService.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE64294E267300FED13A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE63294E267300FED13A /* ViewController.swift */; };
@@ -116,6 +117,7 @@
 		FD24910F2950F2930080CECB /* TVShowFeedControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowFeedControllerViewModel.swift; sourceTree = "<group>"; };
 		FD249111295100EB0080CECB /* ItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMapper.swift; sourceTree = "<group>"; };
 		FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		FD249116295106B40080CECB /* TVShowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowService.swift; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		FD2490EF2950916A0080CECB /* TVShowFeedFeature */ = {
 			isa = PBXGroup;
 			children = (
+				FD249115295106900080CECB /* Service */,
 				FD24910B2950BBEE0080CECB /* ViewModels */,
 				FD2490F22950A1C00080CECB /* Controllers */,
 			);
@@ -278,6 +281,14 @@
 				FD2491012950B24D0080CECB /* TVShowCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FD249115295106900080CECB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FD249116295106B40080CECB /* TVShowService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		FD72AE53294E267300FED13A = {
@@ -700,6 +711,7 @@
 				FD791808294F73120037D0DB /* TVShow.swift in Sources */,
 				FD976BB5295005D9002B9ACC /* PosterView.swift in Sources */,
 				FD79180E294F795F0037D0DB /* Season.swift in Sources */,
+				FD249117295106B40080CECB /* TVShowService.swift in Sources */,
 				FD2490FE2950AA760080CECB /* UIView+Identifier.swift in Sources */,
 				FD976BB329500516002B9ACC /* SeasonView.swift in Sources */,
 				FD791810294F79890037D0DB /* Person.swift in Sources */,

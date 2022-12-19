@@ -11,15 +11,20 @@ import RxCocoa
 protocol TVShowFeedControllerViewModelProtocol {
     associatedtype Input
     associatedtype Output
-    func transform(input: Input) -> Output
+//    func transform(input: Input) -> Output
     var pageNumber: Int { get }
 }
 
 final class TVShowFeedControllerViewModel: TVShowFeedControllerViewModelProtocol {
-    
+
     private var listTVShows = [TVShowFeedViewModelProtocol]()
+    private var service: TVShowService
     
     var pageNumber: Int = 1
+    
+    init(service: TVShowService) {
+        self.service = service
+    }
     
     struct Input {
         let viewDidLoad: Observable<Void>
@@ -31,7 +36,7 @@ final class TVShowFeedControllerViewModel: TVShowFeedControllerViewModelProtocol
         let loadTVShows: Driver<[TVShowFeedViewModelProtocol]>
     }
     
-    func transform(input: Input) -> Output {
-        <#code#>
-    }
+//    func transform(input: Input) -> Output {
+//        <#code#>
+//    }
 }
