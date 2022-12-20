@@ -23,7 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     fileprivate func setLaunchViewController(_ window: UIWindow) {
         let navigationController = MovieDBNavigationController()
         let segmentedController = CategoriesSegmentedController()
-        let tvShowsCollectionView = TVShowsCollectionView()
+        let client = URLSessionHTTPClient()
+        let service = TVShowService<TVShowList>(client: client)
+        let viewModel = TVShowCollectionViewModel(service: service)
+        let tvShowsCollectionView = TVShowsCollectionViewController(viewModel: viewModel)
         let viewController = TVShowFeedViewController(
             segmentedController: segmentedController,
             collectionViewController: tvShowsCollectionView)

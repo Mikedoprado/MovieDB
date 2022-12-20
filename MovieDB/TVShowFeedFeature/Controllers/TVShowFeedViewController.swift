@@ -15,8 +15,7 @@ final class TVShowFeedViewController: UIViewController {
     }
 
     private var segmentedController: CategoriesSegmentedController
-    private var collectionViewController: TVShowsCollectionView
-    private let scrollView = UIScrollView()
+    private var collectionViewController: TVShowsCollectionViewController
     
     let buttonMenu = ButtonBuilder()
         .setTintColor(color: .white)
@@ -29,7 +28,7 @@ final class TVShowFeedViewController: UIViewController {
         title = K.navigationTitle
     }
     
-    init(segmentedController: CategoriesSegmentedController, collectionViewController: TVShowsCollectionView) {
+    init(segmentedController: CategoriesSegmentedController, collectionViewController: TVShowsCollectionViewController) {
         self.segmentedController = segmentedController
         self.collectionViewController = collectionViewController
         super.init(nibName: nil, bundle: nil)
@@ -43,39 +42,32 @@ final class TVShowFeedViewController: UIViewController {
     private func setUI() {
         setupNavigationButtons()
         view.backgroundColor = ProjectColors.almostBlack.color
-        view.addSubview(scrollView)
+
+        view.addSubview(segmentedController.view)
+        view.addSubview(collectionViewController.view)
+        segmentedController.view.constrainHeight(constant: 50)
         
-        scrollView.anchor(
+        segmentedController.view.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             leading: view.leadingAnchor,
-            bottom: view.bottomAnchor,
+            bottom: nil,
             trailing: view.trailingAnchor)
+        
+        collectionViewController.view
+            .anchor(
+                top: segmentedController.view.bottomAnchor,
+                leading: view.leadingAnchor,
+                bottom: view.bottomAnchor,
+                trailing: view.trailingAnchor,
+                padding: .init(
+                    top: MarginSpaces.collectionViewHorizontalMargin.space,
+                    left: MarginSpaces.zero.space,
+                    bottom: MarginSpaces.zero.space,
+                    right: MarginSpaces.zero.space))
         
         [ segmentedController, collectionViewController ].forEach { addChild($0) }
         segmentedController.didMove(toParent: self)
         collectionViewController.didMove(toParent: self)
-        
-        let stackHome = CustomStackView(
-            arrangedSubviews: [
-                segmentedController.view,
-                collectionViewController.view
-            ], spacing: 14, orientation: .vertical)
-        
-        stackHome.constrainWidth(constant: MarginSpaces.sizeWidthScreen.space - (MarginSpaces.horizontalMargin.space))
-        
-        scrollView.addSubview(stackHome)
-        
-        stackHome
-            .anchor(
-                top: scrollView.topAnchor,
-                leading: scrollView.leadingAnchor,
-                bottom: view.bottomAnchor,
-                trailing: scrollView.trailingAnchor,
-                padding: .init(
-                    top: MarginSpaces.collectionViewHorizontalMargin.space,
-                    left: MarginSpaces.collectionViewHorizontalMargin.space,
-                    bottom: MarginSpaces.zero.space,
-                    right: MarginSpaces.collectionViewHorizontalMargin.space))
 
     }
     

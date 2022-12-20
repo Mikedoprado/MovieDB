@@ -16,6 +16,7 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         static let overviewLines: Int = 4
         static let iconSize: CGFloat = 10
         static let posterHeight: CGFloat = 200
+        static let cellCornerRadius: CGFloat = 10
     }
     
     var viewModel: TVShowFeedViewModelProtocol? {
@@ -55,7 +56,7 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
     
     private var overview = LabelBuilder()
         .amountLines(numLines: K.overviewLines)
-        .fontStyle(textStyle: .bodyCell)
+        .fontStyle(textStyle: .bodyDetail)
         .setColor(color: .white)
         .clipToBounds()
         .build()
@@ -65,12 +66,18 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         tvShowDate.text = viewModel?.date
         overview.text = viewModel?.overview
         popularity.text = viewModel?.voteAverage
-        poster.loadImage(urlString: viewModel?.poster)
+        if viewModel?.poster == K.placeHolder {
+            poster.image = UIImage(named: viewModel?.poster ?? "")
+        } else {
+            poster.loadImage(urlString: viewModel?.poster)
+        }
+        
     }
     
     private func setUI() {
         setData()
-        contentView.layer.cornerRadius = 10
+        contentView.backgroundColor = ProjectColors.dark.color
+        contentView.layer.cornerRadius = K.cellCornerRadius
         contentView.clipsToBounds = true
         [poster, tvShowTitle, overview].forEach { [weak self] in
             self?.contentView.addSubview($0)

@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-final class TVShowsCollectionView: UIViewController {
+final class TVShowsCollectionViewController: UIViewController {
+    
+    private var viewModel: TVShowCollectionViewModel
+    private var disposeBag = DisposeBag()
     
     private struct K {
         static let itemHeight: CGFloat = 320
@@ -15,10 +20,16 @@ final class TVShowsCollectionView: UIViewController {
     
     var collectionView: UICollectionView?
 
-    private let itemLayoutWidth = MarginSpaces.sizeWidthScreen.space / 2.45
+    private let itemLayoutWidth = MarginSpaces.sizeWidthScreen.space / 2.3
     
-    init() {
+    init(viewModel: TVShowCollectionViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        setBinds()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setUI()
     }
     
@@ -54,11 +65,22 @@ final class TVShowsCollectionView: UIViewController {
             forCellWithReuseIdentifier: TVShowCollectionViewCell.identifier)
         collectionView?.backgroundColor = ProjectColors.almostBlack.color
         collectionView?.showsVerticalScrollIndicator = false
-        collectionView?.isPagingEnabled = true
+    }
+    
+    private func setBinds() {
+        setCollectionView()
+        guard let collection = collectionView else { return }
+        let viewDidLoad = rx.sentMessage(#selector(UIViewController.viewDidLoad)).map { _ in }
+        let input = TVShowCollectionViewModel.Input(viewDidLoad: viewDidLoad)
+        let outputs = viewModel.transform(input: input)
+        
+        outputs.loadTVShows.drive(collection.rx.items(cellIdentifier: TVShowCollectionViewCell.identifier)) { (_, item, cell) in
+            guard let newCell = cell as? TVShowCollectionViewCell else { return }
+            newCell.viewModel = item
+        }.disposed(by: disposeBag)
     }
     
     private func setUI() {
-        setCollectionView()
         view.backgroundColor = ProjectColors.almostBlack.color
         view.clipsToBounds = true
         

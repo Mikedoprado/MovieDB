@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TVShowDetailView: View {
     
+    var viewModel: TVShowDetailViewModel
+    
     var body: some View {
         ScrollView {
             ZStack {
@@ -28,7 +30,8 @@ struct TVShowDetailView: View {
 }
 
 struct TVShowDetailView_Previews: PreviewProvider {
+    static let viewmodel = TVShowDetailViewModel()
     static var previews: some View {
-        TVShowDetailView()
+        TVShowDetailView(viewModel: viewmodel)
     }
 }
