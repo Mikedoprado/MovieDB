@@ -7,20 +7,10 @@
 
 import RxSwift
 
-struct ItemMapper {
-    static func map<T: Decodable>(_ type: T.Type, from data: Data, from response: HTTPURLResponse) -> Observable<T> {
-       return Observable.create { observer in
-            if response.isOK {
-                if let items = try? JSONDecoder().decode(type.self, from: data) {
-                    observer.onNext(items)
-                } else {
-                    observer.onError(ApiError.invalidData)
-                }
-            } else {
-                observer.onError(ApiError.requestFailed)
-            }
-            observer.onCompleted()
-            return Disposables.create()
-        }
+struct ItemMapper<T: Decodable> {
+    static func map(from data: Data, from response: HTTPURLResponse) throws -> T {
+        guard  response.isOK, let items = try? JSONDecoder().decode(T.self, from: data)
+        else { throw ApiError.invalidData }
+        return items
     }
 }

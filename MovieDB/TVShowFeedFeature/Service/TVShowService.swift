@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class TVShowService {
+final class TVShowService<T: Decodable> {
 
     let client: HTTPClient
     
@@ -16,7 +16,7 @@ final class TVShowService {
         self.client = client
     }
     
-    func getItems<T: Decodable>(endpoint: Endpoint, page: Int?) -> Single<T> {
+    func getItems(endpoint: Endpoint, page: Int?) -> Single<T> {
         let urlComponents = endpoint.getUrlComponents(queryItems: nil)
         let request = endpoint.request(urlComponents: urlComponents)
         guard let url = request.url else { return Single.error(ApiError.invalidURL) }
@@ -25,10 +25,12 @@ final class TVShowService {
             let task = self.client.request(from: url) { result in
                 switch result {
                 case let .success((data, response)):
-                    guard
-                        let mappedResult = ItemMapper.map(T.self, from: data, from: response) as? T
-                    else { return single(.failure(ApiError.jsonConversionFailure)) }
-                    single(.success(mappedResult))
+                    do {
+                        let mappedResult = try ItemMapper<T>.map(from: data, from: response)
+                        single(.success(mappedResult))
+                    } catch {
+                        single(.failure(ApiError.jsonConversionFailure))
+                    }
                 case .failure(_):
                     single(.failure(ApiError.jsonParsingFailure))
                 }
