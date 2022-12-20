@@ -5,6 +5,8 @@
 //  Created by Michael Conchado on 19/12/22.
 //
 
+import Foundation
+
 protocol TVShowFeedViewModelProtocol {
     var tvShow: TVShow { get }
     var date: String { get }
@@ -23,7 +25,7 @@ final class TVShowFeedCellViewModel: TVShowFeedViewModelProtocol {
     }
     
     var date: String {
-        tvShow.firstAirDate
+        tvShow.firstAirDate.toDate()
     }
     
     var poster: String? {
@@ -32,7 +34,7 @@ final class TVShowFeedCellViewModel: TVShowFeedViewModelProtocol {
     }
     
     var overview: String {
-        tvShow.overview
+        tvShow.overview == "" ? "...Opps sorry the overview is missing" : tvShow.overview
     }
     
     var name: String {
@@ -42,5 +44,22 @@ final class TVShowFeedCellViewModel: TVShowFeedViewModelProtocol {
     var voteAverage: String {
         String("\(tvShow.voteAverage)".prefix(3))
     }
+    
+    var id: Int {
+        tvShow.id
+    }
+    
+    func changeFormatDate(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            return dateFormatter.string(from: date)
+        } else {
+            return ""
+        }
+    }
 
 }
+

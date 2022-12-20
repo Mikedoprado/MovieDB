@@ -14,7 +14,6 @@ final class LabelBuilder {
     @discardableResult
     func fontStyle(textStyle: FontSize, weight: UIFont.Weight = .regular) -> LabelBuilder {
         label.font = .systemFont(ofSize: textStyle.size, weight: weight)
-        label.adjustsFontSizeToFitWidth = true
         return self
     }
 

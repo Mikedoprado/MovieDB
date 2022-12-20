@@ -58,6 +58,8 @@
 		FD79182C294FC36D0037D0DB /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79182B294FC36D0037D0DB /* XCTestCase+MemoryLeakTracking.swift */; };
 		FD79182E294FC63B0037D0DB /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79182D294FC63B0037D0DB /* URLProtocolStub.swift */; };
 		FD791830294FD5520037D0DB /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79182F294FD5520037D0DB /* URLSessionHTTPClient.swift */; };
+		FD7D19DE29520EC3002006F0 /* String+TransfomToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19DD29520EC3002006F0 /* String+TransfomToDate.swift */; };
+		FD7D19E129523813002006F0 /* FactoryTVShowFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E029523813002006F0 /* FactoryTVShowFeedController.swift */; };
 		FD976B9F294FE632002B9ACC /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976B9E294FE632002B9ACC /* TVShowDetailView.swift */; };
 		FD976BA3294FE850002B9ACC /* UIColor+toSwfitUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */; };
 		FD976BA7295003C9002B9ACC /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976BA6295003C9002B9ACC /* SummaryView.swift */; };
@@ -150,6 +152,8 @@
 		FD79182B294FC36D0037D0DB /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		FD79182D294FC63B0037D0DB /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		FD79182F294FD5520037D0DB /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		FD7D19DD29520EC3002006F0 /* String+TransfomToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TransfomToDate.swift"; sourceTree = "<group>"; };
+		FD7D19E029523813002006F0 /* FactoryTVShowFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTVShowFeedController.swift; sourceTree = "<group>"; };
 		FD976B9E294FE632002B9ACC /* TVShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
 		FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+toSwfitUIColor.swift"; sourceTree = "<group>"; };
 		FD976BA6295003C9002B9ACC /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 		FD2490EF2950916A0080CECB /* TVShowFeedFeature */ = {
 			isa = PBXGroup;
 			children = (
+				FD7D19DF295237F6002006F0 /* Factory */,
 				FD249115295106900080CECB /* Service */,
 				FD24910B2950BBEE0080CECB /* ViewModels */,
 				FD2490F22950A1C00080CECB /* Controllers */,
@@ -405,6 +410,7 @@
 				FD2490FD2950AA760080CECB /* UIView+Identifier.swift */,
 				FD2491092950B42F0080CECB /* UIView+Loading.swift */,
 				FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */,
+				FD7D19DD29520EC3002006F0 /* String+TransfomToDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +423,14 @@
 				FD79182D294FC63B0037D0DB /* URLProtocolStub.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FD7D19DF295237F6002006F0 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FD7D19E029523813002006F0 /* FactoryTVShowFeedController.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		FD976B9C294FE5FD002B9ACC /* TvShowDetailFeature */ = {
@@ -730,6 +744,7 @@
 				FD2491002950B1F00080CECB /* ImageBuilder.swift in Sources */,
 				FD79181D294F7DCC0037D0DB /* StackView+Custom.swift in Sources */,
 				FD2491062950B3C10080CECB /* DiscardableImageItem.swift in Sources */,
+				FD7D19E129523813002006F0 /* FactoryTVShowFeedController.swift in Sources */,
 				FD1FF21A294F545B0006522D /* MarginSpaces.swift in Sources */,
 				FD976BA9295003F4002B9ACC /* CastListView.swift in Sources */,
 				FD791818294F7BE60037D0DB /* ApiPath.swift in Sources */,
@@ -751,6 +766,7 @@
 				FD249112295100EB0080CECB /* ItemMapper.swift in Sources */,
 				FD2491142951013E0080CECB /* HTTPURLResponse+StatusCode.swift in Sources */,
 				FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */,
+				FD7D19DE29520EC3002006F0 /* String+TransfomToDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

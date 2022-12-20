@@ -9,15 +9,21 @@ import UIKit
 import RxSwift
 
 final class TVShowFeedViewController: UIViewController {
+
+    private var disposeBag = DisposeBag()
     
     private struct K {
         static let navigationTitle: String = "TV Shows"
     }
 
     private var segmentedController: CategoriesSegmentedController
-    private var collectionViewController: TVShowsCollectionViewController
+    private var popularCollectionViewController: TVShowsCollectionViewController
+    private var topRatedCollectionViewController: TVShowsCollectionViewController
+    private var onTvCollectionViewController: TVShowsCollectionViewController
+    private var airingTodayCollectionViewController: TVShowsCollectionViewController
+    private var stackCollectionView = UIStackView()
     
-    let buttonMenu = ButtonBuilder()
+    private let buttonMenu = ButtonBuilder()
         .setTintColor(color: .white)
         .setSystemImage(named: Icons.menu.systemIcon, of: .headline, allStates: true)
         .build()
@@ -25,12 +31,22 @@ final class TVShowFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setBindSegmentedController()
         title = K.navigationTitle
     }
     
-    init(segmentedController: CategoriesSegmentedController, collectionViewController: TVShowsCollectionViewController) {
+    init(
+        segmentedController: CategoriesSegmentedController,
+        popularCollectionViewController: TVShowsCollectionViewController,
+        topRatedCollectionViewController: TVShowsCollectionViewController,
+        onTvCollectionViewController: TVShowsCollectionViewController,
+        airingTodayCollectionViewController: TVShowsCollectionViewController
+    ) {
         self.segmentedController = segmentedController
-        self.collectionViewController = collectionViewController
+        self.popularCollectionViewController = popularCollectionViewController
+        self.topRatedCollectionViewController = topRatedCollectionViewController
+        self.onTvCollectionViewController = onTvCollectionViewController
+        self.airingTodayCollectionViewController = airingTodayCollectionViewController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,12 +55,45 @@ final class TVShowFeedViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setBindSegmentedController() {
+        segmentedController.segmentedControl.rx.selectedSegmentIndex.subscribe(onNext: { [weak self] index in
+            guard let self = self else { return }
+            switch index {
+            case 0:
+                self.addOrRemoveView(addView: self.popularCollectionViewController.view)
+            case 1:
+                self.addOrRemoveView(addView: self.topRatedCollectionViewController.view)
+            case 2:
+                self.addOrRemoveView(addView: self.onTvCollectionViewController.view)
+            case 3:
+                self.addOrRemoveView(addView: self.airingTodayCollectionViewController.view)
+            default:
+                self.addOrRemoveView(addView: self.popularCollectionViewController.view)
+            }
+            
+        }).disposed(by: disposeBag)
+    }
+    
+    func addOrRemoveView(addView: UIView) {
+        toggleView(view: stackCollectionView.arrangedSubviews[0], inStackView: stackCollectionView, show: false)
+        toggleView(view: addView, inStackView: stackCollectionView, show: true)
+        view.layoutIfNeeded()
+    }
+    
+    func toggleView(view: UIView, inStackView stackView: UIStackView, show: Bool) {
+        if show {
+            stackView.addArrangedSubview(view)
+        } else {
+            stackView.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+    }
+    
     private func setUI() {
         setupNavigationButtons()
         view.backgroundColor = ProjectColors.almostBlack.color
 
         view.addSubview(segmentedController.view)
-        view.addSubview(collectionViewController.view)
         segmentedController.view.constrainHeight(constant: 50)
         
         segmentedController.view.anchor(
@@ -53,7 +102,14 @@ final class TVShowFeedViewController: UIViewController {
             bottom: nil,
             trailing: view.trailingAnchor)
         
-        collectionViewController.view
+        stackCollectionView.addSubview(popularCollectionViewController.view)
+        
+        stackCollectionView = CustomStackView(
+            arrangedSubviews: [
+                popularCollectionViewController.view], orientation: .vertical)
+        
+        view.addSubview(stackCollectionView)
+        stackCollectionView
             .anchor(
                 top: segmentedController.view.bottomAnchor,
                 leading: view.leadingAnchor,
@@ -65,9 +121,15 @@ final class TVShowFeedViewController: UIViewController {
                     bottom: MarginSpaces.zero.space,
                     right: MarginSpaces.zero.space))
         
-        [ segmentedController, collectionViewController ].forEach { addChild($0) }
-        segmentedController.didMove(toParent: self)
-        collectionViewController.didMove(toParent: self)
+        [ segmentedController,
+          popularCollectionViewController,
+          topRatedCollectionViewController,
+          onTvCollectionViewController,
+          airingTodayCollectionViewController
+        ].forEach {
+            addChild($0)
+            $0.didMove(toParent: self)
+        }
 
     }
     

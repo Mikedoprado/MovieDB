@@ -7,8 +7,11 @@
 
 import Foundation
 
-enum TVShowsFeed: CaseIterable {
-    case popular, topRated, tvOnTheAir, airingToday
+enum TVShowsFeed: Int, CaseIterable {
+    case popular = 0
+    case topRated = 1
+    case tvOnTheAir = 2
+    case airingToday = 3
 }
 
 extension TVShowsFeed: Endpoint {

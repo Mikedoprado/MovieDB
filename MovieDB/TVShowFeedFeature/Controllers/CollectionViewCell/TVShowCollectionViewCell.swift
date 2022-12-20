@@ -32,7 +32,6 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         .build()
     
     private var tvShowTitle = LabelBuilder()
-        .amountLines(numLines: K.titleLines)
         .fontStyle(textStyle: .title, weight: .semibold)
         .setColor(color: .algaeGreen)
         .build()
@@ -50,7 +49,7 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         .build()
     
     private var starIcon = ImageBuilder()
-        .sizeAndAspectImage(width: 16, height: 16, aspectRatio: .scaleAspectFit)
+        .aspectImage(aspectRatio: .scaleAspectFit)
         .systemImage(iconName: Icons.star.systemIcon, color: .algaeGreen, size: K.iconSize)
         .build()
     
@@ -97,7 +96,7 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
             bottom: nil,
             trailing: contentView.trailingAnchor,
             padding: .init(
-                top: MarginSpaces.collectionViewVerticalMargin.space,
+                top: 45,
                 left: MarginSpaces.horizontalCellMargin.space,
                 bottom: MarginSpaces.zero.space,
                 right: MarginSpaces.zero.space))

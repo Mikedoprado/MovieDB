@@ -11,11 +11,11 @@ import RxSwift
 
 final class TVShowsCollectionViewController: UIViewController {
     
-    private var viewModel: TVShowCollectionViewModel
+    var viewModel: TVShowCollectionViewModel
     private var disposeBag = DisposeBag()
     
     private struct K {
-        static let itemHeight: CGFloat = 320
+        static let itemHeight: CGFloat = 360
     }
     
     var collectionView: UICollectionView?
@@ -25,7 +25,7 @@ final class TVShowsCollectionViewController: UIViewController {
     init(viewModel: TVShowCollectionViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        setBinds()
+        setInputOutputs()
     }
     
     override func viewDidLoad() {
@@ -67,17 +67,44 @@ final class TVShowsCollectionViewController: UIViewController {
         collectionView?.showsVerticalScrollIndicator = false
     }
     
-    private func setBinds() {
+    private func setInputOutputs() {
         setCollectionView()
         guard let collection = collectionView else { return }
         let viewDidLoad = rx.sentMessage(#selector(UIViewController.viewDidLoad)).map { _ in }
-        let input = TVShowCollectionViewModel.Input(viewDidLoad: viewDidLoad)
-        let outputs = viewModel.transform(input: input)
-        
-        outputs.loadTVShows.drive(collection.rx.items(cellIdentifier: TVShowCollectionViewCell.identifier)) { (_, item, cell) in
+        let input = TVShowCollectionViewModel.Input(viewDidLoad: viewDidLoad, didScrollTVShows: collection.rx.didEndDragging)
+        let output = viewModel.transform(input: input)
+        setBinds(output: output, collection: collection)
+    }
+    
+    func setBinds(output: TVShowCollectionViewModel.Output, collection: UICollectionView) {
+        output.loadTVShows.drive(collection.rx.items(cellIdentifier: TVShowCollectionViewCell.identifier)) { (_, item, cell) in
             guard let newCell = cell as? TVShowCollectionViewCell else { return }
             newCell.viewModel = item
         }.disposed(by: disposeBag)
+        
+        collection.rx
+            .modelSelected(TVShowFeedCellViewModel.self)
+            .subscribe(onNext: { tvShow in
+                print(tvShow.id)
+            }).disposed(by: disposeBag)
+        
+        collection.rx.didEndDragging
+            .subscribe(onNext: { [weak self] (decelerate) in
+                guard let self = self else { return }
+                let visibleCells = collection.visibleCells
+                if let lastCell = visibleCells.last {
+                    guard let lastCellIndexPath = collection.indexPath(for: lastCell) else { return }
+                    let visibleIndexPaths = collection.indexPathsForVisibleItems
+                    if visibleIndexPaths.contains(lastCellIndexPath) {
+                        if lastCellIndexPath.item == (self.viewModel.listTVShowsPublisher.value.count - 1) {
+                            self.viewModel.state.accept(.loading)
+                        }
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+
+
     }
     
     private func setUI() {

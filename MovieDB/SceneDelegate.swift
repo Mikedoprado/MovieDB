@@ -21,16 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     fileprivate func setLaunchViewController(_ window: UIWindow) {
+        
         let navigationController = MovieDBNavigationController()
-        let segmentedController = CategoriesSegmentedController()
         let client = URLSessionHTTPClient()
         let service = TVShowService<TVShowList>(client: client)
-        let viewModel = TVShowCollectionViewModel(service: service)
-        let tvShowsCollectionView = TVShowsCollectionViewController(viewModel: viewModel)
-        let viewController = TVShowFeedViewController(
-            segmentedController: segmentedController,
-            collectionViewController: tvShowsCollectionView)
-        navigationController.viewControllers = [viewController]
+        let factoryFeedController = FactoryTVShowFeedController(navigationController: navigationController, client: client, service: service)
+        let tvShowFeedViewController = factoryFeedController.makeViewController()
+        navigationController.viewControllers = [tvShowFeedViewController]
         window.rootViewController = navigationController
         self.window = window
         self.window?.makeKeyAndVisible()
