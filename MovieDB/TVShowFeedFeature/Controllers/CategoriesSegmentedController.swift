@@ -39,9 +39,9 @@ final class CategoriesSegmentedController: UIViewController {
                 trailing: view.trailingAnchor,
                 padding: .init(
                     top: 14,
-                    left: MarginSpaces.verticalMargin.space,
-                    bottom: 14,
-                    right: MarginSpaces.verticalMargin.space))
+                    left: MarginSpaces.horizontalMargin.space,
+                    bottom: MarginSpaces.zero.space,
+                    right: MarginSpaces.horizontalMargin.space))
     }
     
     init() {
