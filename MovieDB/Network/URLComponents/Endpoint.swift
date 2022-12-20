@@ -25,16 +25,15 @@ extension Endpoint {
         components.path = path
         if var query = queryItems {
             query.insert(URLQueryItem(name: "api_key", value: apiKey), at: 0)
-            query.append(URLQueryItem(name: "page", value: "1"))
+            if let newPage = page {
+                query.append(URLQueryItem(name: "page", value: String(describing:newPage)))
+            }
             components.queryItems = query
         } else {
             components.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "language", value: "en-US"),
             ]
-            if let numPage = page {
-                components.queryItems?.append(URLQueryItem(name: "page", value: String(numPage)))
-            }
         }
         return components
     }

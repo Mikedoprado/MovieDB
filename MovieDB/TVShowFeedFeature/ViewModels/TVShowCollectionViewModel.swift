@@ -16,9 +16,8 @@ protocol TVShowFeedControllerViewModelProtocol {
 
 final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
     
-    var listTVShows = [TVShowFeedViewModelProtocol]()
     private var service: TVShowService<TVShowList>
-    var section = BehaviorRelay<(category:TVShowsFeed, page: Int)>(value: (category: .popular, page: 1))
+    private var section = BehaviorRelay<(category:TVShowsFeed, page: Int)>(value: (category: .popular, page: 1))
     var listTVShowsPublisher = BehaviorRelay<[TVShowFeedViewModelProtocol]>(value: [])
     var state = BehaviorRelay<State>(value: .waiting)
     

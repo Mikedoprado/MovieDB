@@ -19,7 +19,11 @@ final class TVShowService<T: Decodable> {
     }
     
     func getItems(endpoint: Endpoint, page: Int?) -> Single<T> {
-        let urlComponents = endpoint.getUrlComponents(queryItems: nil)
+        var query: [URLQueryItem] = []
+        if page != nil {
+            query.append(URLQueryItem(name: "page", value: String(describing: page)))
+        }
+        let urlComponents = endpoint.getUrlComponents(queryItems: query)
         let request = endpoint.request(urlComponents: urlComponents)
         guard let url = request.url else { return Single.error(ApiError.invalidURL) }
 
@@ -40,6 +44,13 @@ final class TVShowService<T: Decodable> {
             return Disposables.create { task.cancel() }
         }
     }
+    
+    func setURL(endpoint: Endpoint, page: Int?) -> Result<URL, ApiError> {
+        let urlComponents = endpoint.getUrlComponents(queryItems: nil)
+        let request = endpoint.request(urlComponents: urlComponents)
+        guard let url = request.url else { return .failure(ApiError.invalidURL) }
+        return .success(url)
+    }
 }
 
 extension TVShowService {
@@ -51,7 +62,6 @@ extension TVShowService {
             let task = self?.client.request(from: url) { result in
                 switch result {
                 case let .success((data, response)):
-                    print(data)
                     do {
                         let mappedResult = try ItemMapper<T>.map(from: data, from: response)
                         promise(.success(mappedResult))
