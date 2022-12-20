@@ -7,6 +7,8 @@
 
 import Foundation
 import RxSwift
+import Combine
+import RxCocoa
 
 final class TVShowService<T: Decodable> {
 
@@ -36,6 +38,30 @@ final class TVShowService<T: Decodable> {
                 }
             }
             return Disposables.create { task.cancel() }
+        }
+    }
+}
+
+extension TVShowService {
+    func getItems(endpoint: Endpoint) -> Future<T, ApiError> {
+        return Future { [weak self] promise in
+            let urlComponents = endpoint.getUrlComponents(queryItems: nil)
+            let request = endpoint.request(urlComponents: urlComponents)
+            guard let url = request.url else { return promise(.failure(ApiError.invalidURL) ) }
+            let task = self?.client.request(from: url) { result in
+                switch result {
+                case let .success((data, response)):
+                    print(data)
+                    do {
+                        let mappedResult = try ItemMapper<T>.map(from: data, from: response)
+                        promise(.success(mappedResult))
+                    } catch {
+                        promise(.failure(ApiError.jsonConversionFailure))
+                    }
+                case .failure(_):
+                    promise(.failure(ApiError.jsonParsingFailure))
+                }
+            }
         }
     }
 }

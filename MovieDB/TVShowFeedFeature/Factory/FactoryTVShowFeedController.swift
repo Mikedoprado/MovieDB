@@ -35,6 +35,7 @@ final class FactoryTVShowFeedController {
         let topRatedCollectionViewController = setCollectionViewController(service: service, category: .topRated)
         let onTvCollectionViewController = setCollectionViewController(service: service, category: .tvOnTheAir)
         let airingTodayCollectionViewController = setCollectionViewController(service: service, category: .airingToday)
+        
         return TVShowFeedViewController(
             segmentedController: segmentedController,
             popularCollectionViewController: popularCollectionViewController,
