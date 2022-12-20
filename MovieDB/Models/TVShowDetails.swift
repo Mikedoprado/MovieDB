@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct TVShowDetails: Decodable  {
+struct TVShowDetails: Decodable {
     var id: Int
     var backdropPath: String?
     var overview: String
     var voteAverage: CGFloat
-    var createdBy: CreatorList
+    var createdBy: [Creator]
     var name: String
-    var season: SeasonList
+    var seasons: [Season]
 }
