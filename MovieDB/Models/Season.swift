@@ -12,8 +12,12 @@ struct Season: Decodable {
     var seasonNumber: Int
     var airDate: String
     var name: String
+    
+    private enum CodingKeys : String, CodingKey {
+        case posterPath = "poster_path"
+        case seasonNumber = "season_number"
+        case airDate = "air_date"
+        case name
+    }
 }
 
-struct SeasonList: Decodable {
-    var seasons: [Season]
-}

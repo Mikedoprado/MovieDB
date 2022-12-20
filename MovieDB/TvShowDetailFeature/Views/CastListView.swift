@@ -37,15 +37,15 @@ struct CastListView: View {
 struct CastListView_Previews: PreviewProvider {
     
     static var arrayPerson: [Person] = [
-        Person(name: "mike", posterPath: ""),
-        Person(name: "andres", posterPath: ""),
-        Person(name: "gustavo", posterPath: ""),
-        Person(name: "rodolfo", posterPath: ""),
-        Person(name: "manuel", posterPath: ""),
-        Person(name: "stella", posterPath: ""),
-        Person(name: "renato", posterPath: ""),
-        Person(name: "luiza", posterPath: ""),
-        Person(name: "Lourdinha", posterPath: "")
+        Person(name: "mike", profilePath: ""),
+        Person(name: "andres", profilePath: ""),
+        Person(name: "gustavo", profilePath: ""),
+        Person(name: "rodolfo", profilePath: ""),
+        Person(name: "manuel", profilePath: ""),
+        Person(name: "stella", profilePath: ""),
+        Person(name: "renato", profilePath: ""),
+        Person(name: "luiza", profilePath: ""),
+        Person(name: "Lourdinha", profilePath: "")
     ]
     static var previews: some View {
         CastListView(arrayPerson: arrayPerson)
