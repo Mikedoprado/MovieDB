@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class TVShowCollectionViewCell: UICollectionViewCell {
+    
+    private var disposeBag = DisposeBag()
     
     private struct K {
         static let placeHolder: String = "notFoundImage"
@@ -61,14 +65,15 @@ final class TVShowCollectionViewCell: UICollectionViewCell {
         .build()
     
     private func setData() {
-        tvShowTitle.text = viewModel?.name
-        tvShowDate.text = viewModel?.date
-        overview.text = viewModel?.overview
-        popularity.text = viewModel?.voteAverage
-        if viewModel?.poster == K.placeHolder {
-            poster.image = UIImage(named: viewModel?.poster ?? "")
+        guard let viewModel = viewModel else { return }
+        Driver.bindLabel(viewModel.name, label: tvShowTitle, disposeBag: disposeBag)
+        Driver.bindLabel(viewModel.date, label: tvShowDate, disposeBag: disposeBag)
+        Driver.bindLabel(viewModel.overview, label: overview, disposeBag: disposeBag)
+        Driver.bindLabel(viewModel.voteAverage, label: popularity, disposeBag: disposeBag)
+        if viewModel.poster.value == K.placeHolder {
+            poster.image = UIImage(named: viewModel.poster.value)
         } else {
-            poster.loadImage(urlString: viewModel?.poster)
+            poster.loadImage(urlString: viewModel.poster.value)
         }
         
     }

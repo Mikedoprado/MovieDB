@@ -60,6 +60,8 @@
 		FD791830294FD5520037D0DB /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79182F294FD5520037D0DB /* URLSessionHTTPClient.swift */; };
 		FD7D19DE29520EC3002006F0 /* String+TransfomToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19DD29520EC3002006F0 /* String+TransfomToDate.swift */; };
 		FD7D19E129523813002006F0 /* FactoryTVShowFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E029523813002006F0 /* FactoryTVShowFeedController.swift */; };
+		FD7D19E329525BB2002006F0 /* Driver+BindLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E229525BB2002006F0 /* Driver+BindLabel.swift */; };
+		FD7D19E529525C62002006F0 /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E429525C62002006F0 /* String+Empty.swift */; };
 		FD976B9F294FE632002B9ACC /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976B9E294FE632002B9ACC /* TVShowDetailView.swift */; };
 		FD976BA3294FE850002B9ACC /* UIColor+toSwfitUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */; };
 		FD976BA7295003C9002B9ACC /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976BA6295003C9002B9ACC /* SummaryView.swift */; };
@@ -154,6 +156,8 @@
 		FD79182F294FD5520037D0DB /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		FD7D19DD29520EC3002006F0 /* String+TransfomToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TransfomToDate.swift"; sourceTree = "<group>"; };
 		FD7D19E029523813002006F0 /* FactoryTVShowFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTVShowFeedController.swift; sourceTree = "<group>"; };
+		FD7D19E229525BB2002006F0 /* Driver+BindLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+BindLabel.swift"; sourceTree = "<group>"; };
+		FD7D19E429525C62002006F0 /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
 		FD976B9E294FE632002B9ACC /* TVShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
 		FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+toSwfitUIColor.swift"; sourceTree = "<group>"; };
 		FD976BA6295003C9002B9ACC /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
@@ -411,6 +415,8 @@
 				FD2491092950B42F0080CECB /* UIView+Loading.swift */,
 				FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */,
 				FD7D19DD29520EC3002006F0 /* String+TransfomToDate.swift */,
+				FD7D19E229525BB2002006F0 /* Driver+BindLabel.swift */,
+				FD7D19E429525C62002006F0 /* String+Empty.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -728,6 +734,7 @@
 				FD976BAD2950048A002B9ACC /* TitleSection.swift in Sources */,
 				FD1FF218294F54020006522D /* FontSize.swift in Sources */,
 				FD154C34295127A800ED58C7 /* TVShowDetailHostingController.swift in Sources */,
+				FD7D19E329525BB2002006F0 /* Driver+BindLabel.swift in Sources */,
 				FD79181F294F7F100037D0DB /* ApiError.swift in Sources */,
 				FD791825294FA43E0037D0DB /* HTTPClient.swift in Sources */,
 				FD2490F82950A51C0080CECB /* ButtonBuilder.swift in Sources */,
@@ -766,6 +773,7 @@
 				FD249112295100EB0080CECB /* ItemMapper.swift in Sources */,
 				FD2491142951013E0080CECB /* HTTPURLResponse+StatusCode.swift in Sources */,
 				FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */,
+				FD7D19E529525C62002006F0 /* String+Empty.swift in Sources */,
 				FD7D19DE29520EC3002006F0 /* String+TransfomToDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

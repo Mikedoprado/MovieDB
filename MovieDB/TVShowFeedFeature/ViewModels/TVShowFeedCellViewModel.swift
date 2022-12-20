@@ -5,45 +5,46 @@
 //  Created by Michael Conchado on 19/12/22.
 //
 
-import Foundation
+import RxCocoa
 
 protocol TVShowFeedViewModelProtocol {
     var tvShow: TVShow { get }
-    var date: String { get }
-    var poster: String? { get }
-    var overview: String { get }
-    var name: String { get }
-    var voteAverage: String { get }
+    var date: BehaviorRelay<String> { get }
+    var poster: BehaviorRelay<String> { get }
+    var overview: BehaviorRelay<String> { get }
+    var name: BehaviorRelay<String> { get }
+    var voteAverage: BehaviorRelay<String> { get }
 }
 
 final class TVShowFeedCellViewModel: TVShowFeedViewModelProtocol {
+    
+    var date = BehaviorRelay<String>(value: .empty)
+    var poster = BehaviorRelay<String>(value: .empty)
+    var overview = BehaviorRelay<String>(value: .empty)
+    var name = BehaviorRelay<String>(value: .empty)
+    var voteAverage = BehaviorRelay<String>(value: .empty)
+    
     
     var tvShow: TVShow
     
     init(tvShow: TVShow) {
         self.tvShow = tvShow
+        date.accept(tvShow.firstAirDate.toDate())
+        poster.accept(posterString)
+        overview.accept(description)
+        name.accept(tvShow.name)
+        voteAverage.accept(String("\(tvShow.voteAverage)".prefix(3)))
     }
     
-    var date: String {
-        tvShow.firstAirDate.toDate()
-    }
-    
-    var poster: String? {
+    var posterString: String {
         guard let image = tvShow.posterPath else { return "notFoundImage" }
         return ApiPath.baseURLImage.path + image
     }
     
-    var overview: String {
+    var description: String {
         tvShow.overview == "" ? "...Opps sorry the overview is missing" : tvShow.overview
     }
-    
-    var name: String {
-        tvShow.name
-    }
-    
-    var voteAverage: String {
-        String("\(tvShow.voteAverage)".prefix(3))
-    }
+
     
     var id: Int {
         tvShow.id
