@@ -20,14 +20,12 @@ extension Endpoint {
         return ApiPath.apiKey.path
     }
     
-    func getUrlComponents(queryItems: [URLQueryItem]?, page: Int? = nil) -> URLComponents {
+    func getUrlComponents(queryItems: [URLQueryItem]?, page: Int) -> URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
         if var query = queryItems {
             query.insert(URLQueryItem(name: "api_key", value: apiKey), at: 0)
-            if let newPage = page {
-                query.append(URLQueryItem(name: "page", value: String(describing:newPage)))
-            }
+            query.append(URLQueryItem(name: "page", value: String(page)))
             components.queryItems = query
         } else {
             components.queryItems = [

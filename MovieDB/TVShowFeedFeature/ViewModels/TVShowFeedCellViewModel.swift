@@ -64,3 +64,8 @@ final class TVShowFeedCellViewModel: TVShowFeedViewModelProtocol {
 
 }
 
+extension TVShowFeedCellViewModel: Equatable {
+    static func == (lhs: TVShowFeedCellViewModel, rhs: TVShowFeedCellViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

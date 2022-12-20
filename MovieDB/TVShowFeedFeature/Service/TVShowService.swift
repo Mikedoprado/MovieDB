@@ -18,12 +18,12 @@ final class TVShowService<T: Decodable> {
         self.client = client
     }
     
-    func getItems(endpoint: Endpoint, page: Int?) -> Single<T> {
+    func getItems(endpoint: Endpoint, page: Int) -> Single<T> {
         var query: [URLQueryItem] = []
-        if page != nil {
+        if page != 1 {
             query.append(URLQueryItem(name: "page", value: String(describing: page)))
         }
-        let urlComponents = endpoint.getUrlComponents(queryItems: query)
+        let urlComponents = endpoint.getUrlComponents(queryItems: query, page: page)
         let request = endpoint.request(urlComponents: urlComponents)
         guard let url = request.url else { return Single.error(ApiError.invalidURL) }
 
@@ -44,22 +44,16 @@ final class TVShowService<T: Decodable> {
             return Disposables.create { task.cancel() }
         }
     }
-    
-    func setURL(endpoint: Endpoint, page: Int?) -> Result<URL, ApiError> {
-        let urlComponents = endpoint.getUrlComponents(queryItems: nil)
-        let request = endpoint.request(urlComponents: urlComponents)
-        guard let url = request.url else { return .failure(ApiError.invalidURL) }
-        return .success(url)
-    }
+
 }
 
 extension TVShowService {
     func getItems(endpoint: Endpoint) -> Future<T, ApiError> {
         return Future { [weak self] promise in
-            let urlComponents = endpoint.getUrlComponents(queryItems: nil)
+            let urlComponents = endpoint.getUrlComponents(queryItems: nil, page: 1)
             let request = endpoint.request(urlComponents: urlComponents)
             guard let url = request.url else { return promise(.failure(ApiError.invalidURL) ) }
-            let task = self?.client.request(from: url) { result in
+            _ = self?.client.request(from: url) { result in
                 switch result {
                 case let .success((data, response)):
                     do {

@@ -16,10 +16,12 @@ protocol TVShowFeedControllerViewModelProtocol {
 
 final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
     
+    var listTVShows = [TVShowFeedViewModelProtocol]()
     private var service: TVShowService<TVShowList>
-    private var section = BehaviorRelay<(category:TVShowsFeed, page: Int)>(value: (category: .popular, page: 1))
-    var listTVShowsPublisher = BehaviorRelay<[TVShowFeedViewModelProtocol]>(value: [])
+    var section = BehaviorRelay<(category:TVShowsFeed, page: Int)>(value: (category: .popular, page: 1))
+    static var listTVShowsPublisher = BehaviorRelay<[TVShowFeedCellViewModel]>(value: [])
     var state = BehaviorRelay<State>(value: .waiting)
+    var amountItems = BehaviorRelay<Int>(value: 19)
     
     init(service: TVShowService<TVShowList>, category: TVShowsFeed) {
         self.service = service
@@ -43,7 +45,6 @@ final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
     func deliverListViewModels(endpoint: Endpoint, page: Int) -> Driver<[TVShowFeedCellViewModel]> {
         return getItemsFromService(endpoint: endpoint, page: page)
             .map { [weak self] shows in
-                self?.incrementPage()
                 let tvShows = shows.map { TVShowFeedCellViewModel(tvShow: $0)}
                 self?.updateStateandIncrementList(tvShow: tvShows)
                 return tvShows
@@ -52,12 +53,13 @@ final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
     }
     
     func updateStateandIncrementList(tvShow: [TVShowFeedCellViewModel]) {
-        listTVShowsPublisher.accept(listTVShowsPublisher.value + tvShow)
+        TVShowCollectionViewModel.listTVShowsPublisher.accept(TVShowCollectionViewModel.listTVShowsPublisher.value + tvShow)
         state.accept(.waiting)
     }
     
     func incrementPage() {
         section.accept((category: section.value.category, page: section.value.page + 1))
+        amountItems.accept(19 * section.value.page)
     }
 
     func getItemsFromService(endpoint: Endpoint, page: Int) -> PrimitiveSequence<SingleTrait, [TVShow]> {
@@ -76,7 +78,24 @@ final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
             }
             .flatMap { $0.map { $0 } }
             .asDriver(onErrorJustReturn: [])
+        
+        let checkingState = state.asDriver()
+            .filter { $0 == .loading }
+            .withLatestFrom(section.asDriver())
+            .map { [weak self] tvShowFeed in
+                self?.incrementPage()
+            }
+        
+        let addingShowForPagination = checkingState
+            .withLatestFrom(section.asDriver())
+            .compactMap { [weak self] tvShowFeed in
+                self?.deliverListViewModels(endpoint: tvShowFeed.category, page: tvShowFeed.page)
+                    .map { TVShowCollectionViewModel.listTVShowsPublisher.value + $0 }
+            }.flatMap { $0.map { $0.removeDuplicates() } }
+            .asDriver(onErrorJustReturn: [])
+  
+        let allTVShow = Driver.merge(loadShows, addingShowForPagination)
 
-        return Output(loadTVShows: loadShows)
+        return Output(loadTVShows: allTVShow)
     }
 }

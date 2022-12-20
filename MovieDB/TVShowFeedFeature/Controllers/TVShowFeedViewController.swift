@@ -7,10 +7,12 @@
 
 import UIKit
 import RxSwift
+import Combine
 
 final class TVShowFeedViewController: UIViewController {
 
     private var disposeBag = DisposeBag()
+    private var cancellable = Set<AnyCancellable>()
     
     private struct K {
         static let navigationTitle: String = "TV Shows"

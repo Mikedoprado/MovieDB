@@ -62,6 +62,7 @@
 		FD7D19E129523813002006F0 /* FactoryTVShowFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E029523813002006F0 /* FactoryTVShowFeedController.swift */; };
 		FD7D19E329525BB2002006F0 /* Driver+BindLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E229525BB2002006F0 /* Driver+BindLabel.swift */; };
 		FD7D19E529525C62002006F0 /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E429525C62002006F0 /* String+Empty.swift */; };
+		FD7D19E72952703E002006F0 /* Array+RemovingDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D19E62952703E002006F0 /* Array+RemovingDuplicates.swift */; };
 		FD976B9F294FE632002B9ACC /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976B9E294FE632002B9ACC /* TVShowDetailView.swift */; };
 		FD976BA3294FE850002B9ACC /* UIColor+toSwfitUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */; };
 		FD976BA7295003C9002B9ACC /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD976BA6295003C9002B9ACC /* SummaryView.swift */; };
@@ -158,6 +159,7 @@
 		FD7D19E029523813002006F0 /* FactoryTVShowFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTVShowFeedController.swift; sourceTree = "<group>"; };
 		FD7D19E229525BB2002006F0 /* Driver+BindLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+BindLabel.swift"; sourceTree = "<group>"; };
 		FD7D19E429525C62002006F0 /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
+		FD7D19E62952703E002006F0 /* Array+RemovingDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RemovingDuplicates.swift"; sourceTree = "<group>"; };
 		FD976B9E294FE632002B9ACC /* TVShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
 		FD976BA2294FE850002B9ACC /* UIColor+toSwfitUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+toSwfitUIColor.swift"; sourceTree = "<group>"; };
 		FD976BA6295003C9002B9ACC /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				FD7D19DD29520EC3002006F0 /* String+TransfomToDate.swift */,
 				FD7D19E229525BB2002006F0 /* Driver+BindLabel.swift */,
 				FD7D19E429525C62002006F0 /* String+Empty.swift */,
+				FD7D19E62952703E002006F0 /* Array+RemovingDuplicates.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				FD2491062950B3C10080CECB /* DiscardableImageItem.swift in Sources */,
 				FD7D19E129523813002006F0 /* FactoryTVShowFeedController.swift in Sources */,
 				FD1FF21A294F545B0006522D /* MarginSpaces.swift in Sources */,
+				FD7D19E72952703E002006F0 /* Array+RemovingDuplicates.swift in Sources */,
 				FD976BA9295003F4002B9ACC /* CastListView.swift in Sources */,
 				FD791818294F7BE60037D0DB /* ApiPath.swift in Sources */,
 				FD2490F42950A1F40080CECB /* CategoriesSegmentedController.swift in Sources */,

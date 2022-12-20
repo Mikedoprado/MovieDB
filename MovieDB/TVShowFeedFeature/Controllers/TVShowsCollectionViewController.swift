@@ -96,15 +96,15 @@ final class TVShowsCollectionViewController: UIViewController {
                     guard let lastCellIndexPath = collection.indexPath(for: lastCell) else { return }
                     let visibleIndexPaths = collection.indexPathsForVisibleItems
                     if visibleIndexPaths.contains(lastCellIndexPath) {
-                        if lastCellIndexPath.item == (self.viewModel.listTVShowsPublisher.value.count - 1) {
+                        if lastCellIndexPath.item == (TVShowCollectionViewModel.listTVShowsPublisher.value.count - 1) {
+                            print(TVShowCollectionViewModel.listTVShowsPublisher.value.count)
+                            print(self.viewModel.section.value.page)
                             self.viewModel.state.accept(.loading)
                         }
                     }
                 }
             })
             .disposed(by: disposeBag)
-
-
     }
     
     private func setUI() {
