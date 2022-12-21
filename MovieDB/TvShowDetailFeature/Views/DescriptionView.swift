@@ -16,10 +16,12 @@ struct DescriptionView: View {
         VStack(alignment: .leading, spacing: 20) {
             Text(description)
                 .font(.subheadline)
+                .multilineTextAlignment(.leading)
                 .foregroundColor(ProjectColors.white.color.toSwiftUIColor())
             Text(creators)
                 .font(.subheadline)
                 .fontWeight(.semibold)
+                .multilineTextAlignment(.leading)
                 .foregroundColor(ProjectColors.white.color.toSwiftUIColor())
         }
         .padding(.horizontal, MarginSpaces.horizontalMargin.space)

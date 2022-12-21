@@ -42,7 +42,7 @@ final class TVShowDetailViewModel: ObservableObject {
             .compactMap { $0?.overview }
             .receive(on: RunLoop.main)
             .sink { [weak self] description in
-                self?.overview = description.isEmpty ? "" : description
+                self?.overview = description.isEmpty ? "...Opps sorry we don't have description name yet" : description
             }.store(in: &cancellables)
         
         $tvShowDetails

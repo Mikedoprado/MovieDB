@@ -9,13 +9,16 @@ import SwiftUI
 
 struct CastListView: View {
     
-    var titleSection: String = "Cast"
-    var arrayPerson: [Person]
+    private struct K {
+        static var sectionName: String = "Cast"
+    }
+    
+    @Binding var arrayPerson: [PersonViewModel]
     
     var body: some View {
         VStack {
             HStack {
-                Text(titleSection)
+                Text(K.sectionName)
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(ProjectColors.algaeGreen.color.toSwiftUIColor())
@@ -23,8 +26,8 @@ struct CastListView: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(alignment: .center, spacing: 20) {
-                    ForEach(arrayPerson, id: \.name) { person in
-                        PersonView(name: person.name)
+                    ForEach($arrayPerson, id: \.name) { person in
+                        PersonView(name: person.name, profilePicture: person.profilePicture)
                     }
                 }
                 .frame(height: 140)
@@ -47,8 +50,9 @@ struct CastListView_Previews: PreviewProvider {
         Person(name: "luiza", profilePath: ""),
         Person(name: "Lourdinha", profilePath: "")
     ]
+    static var arrayPersonViewModel = arrayPerson.map { PersonViewModel(person: $0) }
     static var previews: some View {
-        CastListView(arrayPerson: arrayPerson)
+        CastListView(arrayPerson: .constant(arrayPersonViewModel))
             .previewLayout(.sizeThatFits)
     }
 }

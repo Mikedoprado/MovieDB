@@ -153,14 +153,17 @@ extension TVShowFeedViewController {
             guard let self = self else { return }
             self.detailNavigation.navigateToDetailTVShowView(id: id)
         }
-        topRatedCollectionViewController.navigationAction = { id in
-            print(id)
+        topRatedCollectionViewController.navigationAction = { [weak self] id in
+            guard let self = self else { return }
+            self.detailNavigation.navigateToDetailTVShowView(id: id)
         }
-        onTvCollectionViewController.navigationAction = { id in
-            print(id)
+        onTvCollectionViewController.navigationAction = { [weak self] id in
+            guard let self = self else { return }
+            self.detailNavigation.navigateToDetailTVShowView(id: id)
         }
-        airingTodayCollectionViewController.navigationAction = { id in
-            print(id)
+        airingTodayCollectionViewController.navigationAction = { [weak self] id in
+            guard let self = self else { return }
+            self.detailNavigation.navigateToDetailTVShowView(id: id)
         }
     }
 }

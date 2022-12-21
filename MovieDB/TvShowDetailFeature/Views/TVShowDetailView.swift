@@ -10,22 +10,14 @@ import SwiftUI
 struct TVShowDetailView: View {
     
     @StateObject var detailsViewModel: TVShowDetailViewModel
+    @StateObject var castViewModel: TVShowCastViewModel
     
     private struct K {
         static var paddingTop: CGFloat = 200
         static var cornerRadius: CGFloat = 20
         static var castListPaddingBottom: CGFloat = 10
     }
-    
-    var arrayPerson: [Person] = [
-        Person(name: "mike", profilePath: ""),
-        Person(name: "manuel", profilePath: ""),
-        Person(name: "stella", profilePath: ""),
-        Person(name: "renato", profilePath: ""),
-        Person(name: "luiza", profilePath: ""),
-        Person(name: "Lourdinha", profilePath: "")
-    ]
-    
+
     var body: some View {
         ScrollView {
             ZStack {
@@ -39,7 +31,7 @@ struct TVShowDetailView: View {
                             season: $detailsViewModel.lastSeason,
                             date: $detailsViewModel.lastSeasonAirDate,
                             posterSeason: $detailsViewModel.poster)
-                        CastListView(arrayPerson: arrayPerson)
+                        CastListView(arrayPerson: $castViewModel.tvShowCast)
                             .padding(.bottom, K.castListPaddingBottom)
                     }
                     .frame(maxHeight: .infinity)
@@ -60,9 +52,11 @@ struct TVShowDetailView: View {
 
 struct TVShowDetailView_Previews: PreviewProvider {
     static let client = URLSessionHTTPClient()
-    static let service = TVShowService<TVShowDetails>(client: client)
-    static var detailViewModel = TVShowDetailViewModel(service: service, id: 1)
+    static let detailService = TVShowService<TVShowDetails>(client: client)
+    static let castService = TVShowService<Cast>(client: client)
+    static var detailViewModel = TVShowDetailViewModel(service: detailService, id: 1)
+    static var castViewModel = TVShowCastViewModel(service: castService, id: 1)
     static var previews: some View {
-        TVShowDetailView(detailsViewModel: detailViewModel)
+        TVShowDetailView(detailsViewModel: detailViewModel, castViewModel: castViewModel)
     }
 }

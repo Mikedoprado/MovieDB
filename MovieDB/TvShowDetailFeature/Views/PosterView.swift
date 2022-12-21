@@ -9,6 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct PosterView: View {
+    
     private struct K {
         static var placeholderImage: String = "notFoundImage"
     }

@@ -9,7 +9,7 @@ import Foundation
 
 struct Person: Decodable {
     var name: String
-    var profilePath: String
+    var profilePath: String?
     
     private enum CodingKeys : String, CodingKey {
         case name

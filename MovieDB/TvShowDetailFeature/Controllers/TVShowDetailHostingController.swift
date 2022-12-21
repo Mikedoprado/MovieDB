@@ -32,14 +32,20 @@ class TVShowDetailHostingController: UIViewController {
     }
     
     func setSwiftUIViewOnController(){
-        let tvShowDetailView = TVShowDetailView(detailsViewModel: self.tvShowDetailViewModel)
+        let tvShowDetailView = TVShowDetailView(
+            detailsViewModel: self.tvShowDetailViewModel,
+            castViewModel: self.tvShowCastViewModel)
         let controller = UIHostingController(rootView: tvShowDetailView)
         self.addChild(controller)
         self.view.addSubview(controller.view)
         controller.didMove(toParent: self)
         
         controller.view.anchor(
-            top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: -80, left: 0, bottom: 0, right: 0))
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: -100, left: 0, bottom: 0, right: 0))
     }
     
 }
