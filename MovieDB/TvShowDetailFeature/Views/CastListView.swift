@@ -18,7 +18,7 @@ struct CastListView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(K.sectionName)
+                Text(arrayPerson.isEmpty ? "" : K.sectionName)
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(ProjectColors.algaeGreen.color.toSwiftUIColor())
@@ -30,7 +30,7 @@ struct CastListView: View {
                         PersonView(name: person.name, profilePicture: person.profilePicture)
                     }
                 }
-                .frame(height: 140)
+                .frame(height: arrayPerson.isEmpty ? 0 : 140)
             }
         }
         .padding(.leading, MarginSpaces.horizontalMargin.space)
