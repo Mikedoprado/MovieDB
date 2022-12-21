@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct PersonView: View {
     
     private struct K {
-        static var placeholderImage: String = "notFoundImage"
+        static var placeholderImage: String = "notFound"
         static var profilePictureSize: CGFloat =  100
         static var profilePictureCornerRadius: CGFloat =  50
     }

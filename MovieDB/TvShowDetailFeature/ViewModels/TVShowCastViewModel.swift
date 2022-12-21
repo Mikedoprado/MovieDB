@@ -25,7 +25,7 @@ final class PersonViewModel: ObservableObject {
             }.store(in: &cancellables)
         
         $person
-            .map { $0.profilePath == nil ? "notFoundImage" : ApiPath.baseURLImage.path + ($0.profilePath ?? "") }
+            .map { $0.profilePath == nil ? "notFound" : ApiPath.baseURLImage.path + ($0.profilePath ?? "") }
             .receive(on: RunLoop.main)
             .sink { [weak self] image in
                 self?.profilePicture = image
