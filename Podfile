@@ -16,8 +16,4 @@ target 'MovieDB' do
     pod 'RxTest', '6.5.0'
   end
 
-  target 'MovieDBUITests' do
-    # Pods for testing
-  end
-
 end
