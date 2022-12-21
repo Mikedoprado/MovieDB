@@ -30,18 +30,24 @@ final class FactoryTVShowFeedController {
         return TVShowsCollectionViewController(viewModel: viewModel)
     }
     
+    private func setDetailNavigation() -> DetailNavigation {
+        return DetailNavigation(client: client, navigationController: navigationController)
+    }
+    
     func makeViewController() -> UIViewController {
 
         let popularCollectionViewController = setCollectionViewController(category: .popular)
         let topRatedCollectionViewController = setCollectionViewController(category: .topRated)
         let onTvCollectionViewController = setCollectionViewController(category: .tvOnTheAir)
         let airingTodayCollectionViewController = setCollectionViewController(category: .airingToday)
+        let detailNavigation = setDetailNavigation()
         
         return TVShowFeedViewController(
             segmentedController: segmentedController,
             popularCollectionViewController: popularCollectionViewController,
             topRatedCollectionViewController: topRatedCollectionViewController,
             onTvCollectionViewController: onTvCollectionViewController,
-            airingTodayCollectionViewController: airingTodayCollectionViewController)
+            airingTodayCollectionViewController: airingTodayCollectionViewController,
+            detailNavigationController: detailNavigation)
     }
 }

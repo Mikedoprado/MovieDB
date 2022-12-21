@@ -14,6 +14,8 @@ final class TVShowFeedViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private var cancellable = Set<AnyCancellable>()
     
+    weak var detailNavigation: DetailNavigation?
+    
     private struct K {
         static let navigationTitle: String = "TV Shows"
     }
@@ -42,7 +44,8 @@ final class TVShowFeedViewController: UIViewController {
         popularCollectionViewController: TVShowsCollectionViewController,
         topRatedCollectionViewController: TVShowsCollectionViewController,
         onTvCollectionViewController: TVShowsCollectionViewController,
-        airingTodayCollectionViewController: TVShowsCollectionViewController
+        airingTodayCollectionViewController: TVShowsCollectionViewController,
+        detailNavigationController: DetailNavigation
     ) {
         self.segmentedController = segmentedController
         self.popularCollectionViewController = popularCollectionViewController

@@ -31,6 +31,7 @@
 		FD249112295100EB0080CECB /* ItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD249111295100EB0080CECB /* ItemMapper.swift */; };
 		FD2491142951013E0080CECB /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */; };
 		FD249117295106B40080CECB /* TVShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD249116295106B40080CECB /* TVShowService.swift */; };
+		FD3EAAE6295345E200380A28 /* DetailNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3EAAE5295345E200380A28 /* DetailNavigation.swift */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE69294E267400FED13A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD72AE68294E267400FED13A /* Assets.xcassets */; };
@@ -116,6 +117,7 @@
 		FD249111295100EB0080CECB /* ItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMapper.swift; sourceTree = "<group>"; };
 		FD2491132951013E0080CECB /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		FD249116295106B40080CECB /* TVShowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowService.swift; sourceTree = "<group>"; };
+		FD3EAAE5295345E200380A28 /* DetailNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNavigation.swift; sourceTree = "<group>"; };
 		FD72AE5C294E267300FED13A /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD72AE5F294E267300FED13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD72AE61294E267300FED13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		FD2490EF2950916A0080CECB /* TVShowFeedFeature */ = {
 			isa = PBXGroup;
 			children = (
+				FD3EAAE4295345CD00380A28 /* Navigator */,
 				FD7D19DF295237F6002006F0 /* Factory */,
 				FD249115295106900080CECB /* Service */,
 				FD24910B2950BBEE0080CECB /* ViewModels */,
@@ -292,6 +295,14 @@
 				FD7D19EA295291BB002006F0 /* TVShowListServiceImpl.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		FD3EAAE4295345CD00380A28 /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				FD3EAAE5295345E200380A28 /* DetailNavigation.swift */,
+			);
+			path = Navigator;
 			sourceTree = "<group>";
 		};
 		FD72AE53294E267300FED13A = {
@@ -638,6 +649,7 @@
 				FD154C34295127A800ED58C7 /* TVShowDetailHostingController.swift in Sources */,
 				FD7D19E329525BB2002006F0 /* Driver+BindLabel.swift in Sources */,
 				FD79181F294F7F100037D0DB /* ApiError.swift in Sources */,
+				FD3EAAE6295345E200380A28 /* DetailNavigation.swift in Sources */,
 				FD791825294FA43E0037D0DB /* HTTPClient.swift in Sources */,
 				FD2490F82950A51C0080CECB /* ButtonBuilder.swift in Sources */,
 				FD976BAB29500445002B9ACC /* PersonView.swift in Sources */,

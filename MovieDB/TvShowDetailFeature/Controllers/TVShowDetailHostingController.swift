@@ -24,7 +24,7 @@ final class TVShowDetailViewModel {
 
 class TVShowDetailHostingController: UIViewController {
     
-    var viewModel: TVShowDetailViewModel?
+    var viewModel: TVShowDetailViewModel
     
     init(viewModel: TVShowDetailViewModel) {
         self.viewModel = viewModel
@@ -37,13 +37,14 @@ class TVShowDetailHostingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let viewModel = viewModel else { return }
-        let tvShowDetailView = TVShowDetailView(viewModel: viewModel)
+    }
+    
+    func setSwiftUIViewOnController(){
+        let tvShowDetailView = TVShowDetailView()
         let controller = UIHostingController(rootView: tvShowDetailView)
         self.addChild(controller)
         self.view.addSubview(controller.view)
         controller.didMove(toParent: self)
-        controller.rootView.viewModel = viewModel
         controller.view.fillSuperview()
     }
     
