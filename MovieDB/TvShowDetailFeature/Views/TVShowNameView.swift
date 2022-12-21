@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TVShowNameView: View {
     
-    var tvShowName: String
+    @Binding var tvShowName: String
     
     var body: some View {
         HStack (alignment: .center){
@@ -29,8 +29,9 @@ struct TVShowNameView: View {
 }
 
 struct TVShowNameView_Previews: PreviewProvider {
+    static var tvShowName: String = "Rick and Morty"
     static var previews: some View {
-        TVShowNameView(tvShowName: "Rick and Morty")
+        TVShowNameView(tvShowName: .constant(tvShowName))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -8,26 +8,17 @@
 import UIKit
 import SwiftUI
 
-final class TVShowDetailViewModel {
-    
-//    var service: TVShowService<TVShowDetails>
-//    var id: Int
-//    var detailsTVShow: TVShowDetails?
-//    
-//    init(service: TVShowService<TVShowDetails>, id: Int) {
-//        self.service = service
-//        self.id = id
-//    }
-//    
-//    private func getDetailsTvShow() {}
-}
-
 class TVShowDetailHostingController: UIViewController {
     
-    var viewModel: TVShowDetailViewModel
+    var tvShowDetailViewModel: TVShowDetailViewModel
+    let tvShowCastViewModel: TVShowCastViewModel
     
-    init(viewModel: TVShowDetailViewModel) {
-        self.viewModel = viewModel
+    init(
+        tvShowDetailViewModel: TVShowDetailViewModel,
+        tvShowCastViewModel:TVShowCastViewModel
+    ) {
+        self.tvShowDetailViewModel = tvShowDetailViewModel
+        self.tvShowCastViewModel = tvShowCastViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,15 +28,18 @@ class TVShowDetailHostingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSwiftUIViewOnController()
     }
     
     func setSwiftUIViewOnController(){
-        let tvShowDetailView = TVShowDetailView()
+        let tvShowDetailView = TVShowDetailView(detailsViewModel: self.tvShowDetailViewModel)
         let controller = UIHostingController(rootView: tvShowDetailView)
         self.addChild(controller)
         self.view.addSubview(controller.view)
         controller.didMove(toParent: self)
-        controller.view.fillSuperview()
+        
+        controller.view.anchor(
+            top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: -80, left: 0, bottom: 0, right: 0))
     }
     
 }

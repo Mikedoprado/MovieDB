@@ -11,8 +11,9 @@ import RxSwift
 
 final class TVShowsCollectionViewController: UIViewController {
     
-    var viewModel: TVShowCollectionViewModel
+    private var viewModel: TVShowCollectionViewModel
     private var disposeBag = DisposeBag()
+    var navigationAction: ((Int) -> Void)?
     
     private struct K {
         static let itemHeight: CGFloat = 360
@@ -106,8 +107,8 @@ final class TVShowsCollectionViewController: UIViewController {
         
         collection.rx
             .modelSelected(TVShowFeedCellViewModel.self)
-            .subscribe(onNext: { tvShow in
-                
+            .subscribe(onNext: { [weak self] tvShow in
+                self?.navigationAction?(tvShow.id)
             }).disposed(by: disposeBag)
     }
     

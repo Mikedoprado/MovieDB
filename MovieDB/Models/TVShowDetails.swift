@@ -11,7 +11,7 @@ struct TVShowDetails: Decodable {
     var id: Int
     var backdropPath: String?
     var overview: String
-    var voteAverage: CGFloat
+    var voteAverage: Double
     var createdBy: [Creator]
     var name: String
     var seasons: [Season]

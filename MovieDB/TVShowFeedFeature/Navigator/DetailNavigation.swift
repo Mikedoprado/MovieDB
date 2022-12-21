@@ -21,8 +21,12 @@ final class DetailNavigation {
     }
     
     func navigateToDetailTVShowView(id: Int) {
-        let viewModel = TVShowDetailViewModel()
-        let hostingDetailController = TVShowDetailHostingController(viewModel: viewModel)
+        print(id)
+        let tvShowDetailViewModel = TVShowDetailViewModel(service: serviceDetail, id: id)
+        let tvShowCastViewModel = TVShowCastViewModel(service: serviceCast, id: id)
+        let hostingDetailController = TVShowDetailHostingController(
+            tvShowDetailViewModel: tvShowDetailViewModel,
+            tvShowCastViewModel: tvShowCastViewModel)
         navigationController.pushViewController(hostingDetailController, animated: true)
     }
 }

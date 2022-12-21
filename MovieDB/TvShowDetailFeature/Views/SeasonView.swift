@@ -10,10 +10,11 @@ import SwiftUI
 struct SeasonView: View {
     
     var sectionTitle: String = "Last Season"
-    var currentSeason: String
-    var date: String
     var buttonText: String = "View all Seasons"
-    var poster: String = ""
+    
+    @Binding var currentSeason: String
+    @Binding var date: String
+    @Binding var poster: String
     
     var body: some View {
         VStack{
@@ -59,8 +60,13 @@ struct SeasonView: View {
 }
 
 struct SeasonView_Previews: PreviewProvider {
+    static var sectionTitle: String = "Last Season"
+    static var currentSeason: String = ""
+    static var date: String = ""
+    static var buttonText: String = "View all Seasons"
+    static var poster: String = ""
     static var previews: some View {
-        SeasonView(currentSeason: "Season 4", date: "Dec 18, 2022")
+        SeasonView(currentSeason: .constant(currentSeason), date: .constant(date), poster: .constant(poster))
             .previewLayout(.sizeThatFits)
     }
 }

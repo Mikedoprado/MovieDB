@@ -14,7 +14,7 @@ final class TVShowFeedViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private var cancellable = Set<AnyCancellable>()
     
-    weak var detailNavigation: DetailNavigation?
+    var detailNavigation: DetailNavigation
     
     private struct K {
         static let navigationTitle: String = "TV Shows"
@@ -36,6 +36,7 @@ final class TVShowFeedViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setBindSegmentedController()
+        setNavigation()
         title = K.navigationTitle
     }
     
@@ -52,6 +53,7 @@ final class TVShowFeedViewController: UIViewController {
         self.topRatedCollectionViewController = topRatedCollectionViewController
         self.onTvCollectionViewController = onTvCollectionViewController
         self.airingTodayCollectionViewController = airingTodayCollectionViewController
+        self.detailNavigation = detailNavigationController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -143,4 +145,22 @@ final class TVShowFeedViewController: UIViewController {
         navigationItem.rightBarButtonItems = [rightBarButtonMenu]
     }
     
+}
+
+extension TVShowFeedViewController {
+    func setNavigation() {
+        popularCollectionViewController.navigationAction = { [weak self] id in
+            guard let self = self else { return }
+            self.detailNavigation.navigateToDetailTVShowView(id: id)
+        }
+        topRatedCollectionViewController.navigationAction = { id in
+            print(id)
+        }
+        onTvCollectionViewController.navigationAction = { id in
+            print(id)
+        }
+        airingTodayCollectionViewController.navigationAction = { id in
+            print(id)
+        }
+    }
 }

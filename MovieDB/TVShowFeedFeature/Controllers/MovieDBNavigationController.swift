@@ -19,7 +19,15 @@ final class MovieDBNavigationController: UINavigationController {
     }
     
     func hideNavigationBar() {
-        navigationBar.backgroundColor = .clear
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .clear
+        appearance.titleTextAttributes = [.foregroundColor: ProjectColors.dark85.color]
+        appearance.largeTitleTextAttributes = [.foregroundColor: ProjectColors.dark85.color]
+        navigationBar.tintColor = ProjectColors.dark85.color
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+        navigationBar.isHidden = false
+        navigationBar.isTranslucent = false
     }
     
     func setNavigationController() {

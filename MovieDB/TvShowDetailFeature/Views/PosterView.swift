@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PosterView: View {
     
-    var image: String = ""
+    @Binding var image: String
     
     var body: some View {
         VStack {
-            Rectangle()
+            Image(image)
                 .foregroundColor(ProjectColors.coral.color.toSwiftUIColor())
                 .frame(maxWidth: .infinity)
                 .frame(height: 250)
@@ -25,6 +25,6 @@ struct PosterView: View {
 
 struct PosterView_Previews: PreviewProvider {
     static var previews: some View {
-        PosterView()
+        PosterView(image: .constant(""))
     }
 }

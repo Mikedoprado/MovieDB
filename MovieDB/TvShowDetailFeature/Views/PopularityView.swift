@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PopularityView: View {
-    var rating: String = "8.6"
+    
+    @Binding var rating: String
     
     var body: some View {
         VStack {
@@ -31,8 +32,9 @@ struct PopularityView: View {
 }
 
 struct PopularityView_Previews: PreviewProvider {
+    static var rating: String = "8.6"
     static var previews: some View {
-        PopularityView()
+        PopularityView(rating: .constant(rating))
             .previewLayout(.sizeThatFits)
     }
 }
