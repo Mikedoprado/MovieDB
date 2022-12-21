@@ -25,8 +25,8 @@ final class FactoryTVShowFeedController {
     }
     
     private func setCollectionViewController(category: TVShowsFeed) -> TVShowsCollectionViewController {
-        let tvShowListservice = TVShowListServiceImpl(endpoint: category, service: service)
-        let viewModel = setViewModel(service: tvShowListservice)
+        let tvShowListService = TVShowListServiceImpl(endpoint: category, service: service)
+        let viewModel = setViewModel(service: tvShowListService)
         return TVShowsCollectionViewController(viewModel: viewModel)
     }
     

@@ -6,6 +6,11 @@
 //
 
 import RxSwift
+import Combine
+
+protocol TVShowListService {
+    func getItems(page: Int) -> Single<TVShowList>
+}
 
 final class TVShowListServiceImpl: TVShowListService {
 

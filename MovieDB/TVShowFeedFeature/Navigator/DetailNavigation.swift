@@ -10,8 +10,8 @@ import UIKit
 
 final class DetailNavigation {
     
-    let client: HTTPClient
-    let navigationController: UINavigationController
+    private let client: HTTPClient
+    private let navigationController: UINavigationController
     lazy var serviceDetail = TVShowService<TVShowDetails>(client: client)
     lazy var serviceCast = TVShowService<Cast>(client: client)
 
@@ -20,10 +20,19 @@ final class DetailNavigation {
         self.navigationController = navigationController
     }
     
+    private func setDetailViewModel(service: TVShowDetailService, id: Int) ->TVShowDetailViewModel {
+        return TVShowDetailViewModel(service: service, id: id)
+    }
+    
+    private func setCastViewModel(service: TVShowCastService, id: Int) ->TVShowCastViewModel {
+        return TVShowCastViewModel(service: service, id: id)
+    }
+    
     func navigateToDetailTVShowView(id: Int) {
-        print(id)
-        let tvShowDetailViewModel = TVShowDetailViewModel(service: serviceDetail, id: id)
-        let tvShowCastViewModel = TVShowCastViewModel(service: serviceCast, id: id)
+        let tvShowDetailService = TVShowDetailServiceImpl(endpoint: InfoById.tvShowDetails(id), service: serviceDetail)
+        let tvShowCastService = TVShowCastServiceImpl(endpoint: InfoById.tvShowCast(id), service: serviceCast)
+        let tvShowDetailViewModel = setDetailViewModel(service: tvShowDetailService, id: id)
+        let tvShowCastViewModel = setCastViewModel(service: tvShowCastService, id: id)
         let hostingDetailController = TVShowDetailHostingController(
             tvShowDetailViewModel: tvShowDetailViewModel,
             tvShowCastViewModel: tvShowCastViewModel)

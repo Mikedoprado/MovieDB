@@ -9,7 +9,7 @@ import Foundation
 
 final class TVShowDetailViewModel: ObservableObject {
     
-    var service: TVShowService<TVShowDetails>
+    var service: TVShowDetailService
     var id: Int
     
     @Published var tvShowDetails: TVShowDetails?
@@ -23,7 +23,7 @@ final class TVShowDetailViewModel: ObservableObject {
     @Published var backDropPath: String = .empty
     private var cancellables = Set<AnyCancellable>()
     
-    init(service: TVShowService<TVShowDetails>, id: Int) {
+    init(service: TVShowDetailService, id: Int) {
         self.service = service
         self.id = id
         getDetailsTvShow()

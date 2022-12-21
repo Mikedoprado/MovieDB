@@ -54,8 +54,10 @@ struct TVShowDetailView_Previews: PreviewProvider {
     static let client = URLSessionHTTPClient()
     static let detailService = TVShowService<TVShowDetails>(client: client)
     static let castService = TVShowService<Cast>(client: client)
-    static var detailViewModel = TVShowDetailViewModel(service: detailService, id: 1)
-    static var castViewModel = TVShowCastViewModel(service: castService, id: 1)
+    static let tvShowDetailServiceImpl = TVShowDetailServiceImpl(endpoint: InfoById.tvShowDetails(1), service: detailService)
+    static let tvShowCastServiceImpl = TVShowCastServiceImpl(endpoint: InfoById.tvShowCast(1), service: castService)
+    static var detailViewModel = TVShowDetailViewModel(service: tvShowDetailServiceImpl, id: 1)
+    static var castViewModel = TVShowCastViewModel(service: tvShowCastServiceImpl, id: 1)
     static var previews: some View {
         TVShowDetailView(detailsViewModel: detailViewModel, castViewModel: castViewModel)
     }
