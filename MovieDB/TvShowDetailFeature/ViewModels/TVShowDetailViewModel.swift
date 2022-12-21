@@ -5,6 +5,7 @@
 //  Created by Michael Conchado on 21/12/22.
 //
 import Combine
+import Foundation
 
 final class TVShowDetailViewModel: ObservableObject {
     
@@ -32,12 +33,14 @@ final class TVShowDetailViewModel: ObservableObject {
     func bindItems() {
         $tvShowDetails
             .compactMap { $0?.name }
+            .receive(on: RunLoop.main)
             .sink { [weak self] name in
                 self?.tvShowName = name
             }.store(in: &cancellables)
         
         $tvShowDetails
             .compactMap { $0?.overview }
+            .receive(on: RunLoop.main)
             .sink { [weak self] description in
                 self?.overview = description.isEmpty ? "" : description
             }.store(in: &cancellables)
@@ -46,6 +49,7 @@ final class TVShowDetailViewModel: ObservableObject {
             .compactMap { $0?.createdBy }
             .map {  $0.map { $0.name }}
             .map { $0.joined(separator: " ") }
+            .receive(on: RunLoop.main)
             .sink { [weak self] value in
                 self?.creators = value.isEmpty ? "" : "Created by \(value)"
             }.store(in: &cancellables)
@@ -53,6 +57,7 @@ final class TVShowDetailViewModel: ObservableObject {
         $tvShowDetails
             .compactMap { $0?.seasons.last }
             .map { "Season \(String(describing: $0.seasonNumber))" }
+            .receive(on: RunLoop.main)
             .sink { [weak self] season in
                 self?.lastSeason = season
             }.store(in: &cancellables)
@@ -60,6 +65,7 @@ final class TVShowDetailViewModel: ObservableObject {
         $tvShowDetails
             .compactMap { $0?.seasons }
             .compactMap { $0.last?.airDate.toDate() }
+            .receive(on: RunLoop.main)
             .sink { [weak self] date in
                 self?.lastSeasonAirDate = date
             }.store(in: &cancellables)
@@ -67,19 +73,22 @@ final class TVShowDetailViewModel: ObservableObject {
         $tvShowDetails
             .compactMap { $0?.voteAverage }
             .map { "\(String(describing: $0).prefix(3))" }
+            .receive(on: RunLoop.main)
             .sink { [weak self] score in
                 self?.voteAverage = score
             }.store(in: &cancellables)
         
         $tvShowDetails
-            .compactMap { $0?.seasons }
-            .compactMap { ApiPath.baseURLImage.path + ($0.last?.posterPath ?? "notFoundImage") }
+            .compactMap { $0?.seasons.last }
+            .map { $0.posterPath == nil ? "notFoundImage" : ApiPath.baseURLImage.path + ($0.posterPath ?? "") }
+            .receive(on: RunLoop.main)
             .sink { [weak self] image in
                 self?.poster = image
             }.store(in: &cancellables)
         
         $tvShowDetails
-            .map { ApiPath.baseURLImage.path + ($0?.backdropPath ?? "notFoundImage") }
+            .map { $0?.backdropPath == nil ? "notFoundImage" : ApiPath.baseURLImage.path + ($0?.backdropPath ?? "") }
+            .receive(on: RunLoop.main)
             .sink { [weak self] image in
                 self?.backDropPath = image
             }.store(in: &cancellables)
@@ -89,6 +98,7 @@ final class TVShowDetailViewModel: ObservableObject {
         service
             .getItems(endpoint: InfoById.tvShowDetails(id))
             .map { $0 }
+            .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {
                 case .finished:

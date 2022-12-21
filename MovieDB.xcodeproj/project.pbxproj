@@ -34,6 +34,7 @@
 		FD3EAAE6295345E200380A28 /* DetailNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3EAAE5295345E200380A28 /* DetailNavigation.swift */; };
 		FD3EAAE92953504D00380A28 /* TVShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3EAAE82953504D00380A28 /* TVShowDetailViewModel.swift */; };
 		FD3EAAEB2953506B00380A28 /* TVShowCastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3EAAEA2953506B00380A28 /* TVShowCastViewModel.swift */; };
+		FD3EAAEE2953718900380A28 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FD3EAAED2953718900380A28 /* SDWebImageSwiftUI */; };
 		FD72AE60294E267300FED13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE5F294E267300FED13A /* AppDelegate.swift */; };
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE69294E267400FED13A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD72AE68294E267400FED13A /* Assets.xcassets */; };
@@ -173,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3EAAEE2953718900380A28 /* SDWebImageSwiftUI in Frameworks */,
 				796596CA2060CC3FF7CE0C5B /* Pods_MovieDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +484,9 @@
 			dependencies = (
 			);
 			name = MovieDB;
+			packageProductDependencies = (
+				FD3EAAED2953718900380A28 /* SDWebImageSwiftUI */,
+			);
 			productName = MovieDB;
 			productReference = FD72AE5C294E267300FED13A /* MovieDB.app */;
 			productType = "com.apple.product-type.application";
@@ -534,6 +539,9 @@
 				Base,
 			);
 			mainGroup = FD72AE53294E267300FED13A;
+			packageReferences = (
+				FD3EAAEC2953718900380A28 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = FD72AE5D294E267300FED13A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -988,6 +996,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD3EAAEC2953718900380A28 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FD3EAAED2953718900380A28 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD3EAAEC2953718900380A28 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD72AE54294E267300FED13A /* Project object */;
 }

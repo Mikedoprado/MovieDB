@@ -6,11 +6,21 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SeasonView: View {
     
-    var sectionTitle: String = "Last Season"
-    var buttonText: String = "View all Seasons"
+    private struct K {
+        static var sectionTitle: String = "Last Season"
+        static var buttonText: String = "View all Seasons"
+        static var placeholderImage: String = "notFoundImage"
+        static var imageHeight: CGFloat = 230
+        static var imageWidthDivider: CGFloat = 2.8
+        static var spacingImageButton: CGFloat = 30
+        static var spacingDateButton: CGFloat = 10
+        static var buttonRoundCorners: CGFloat = 5
+        static var buttonHeight: CGFloat = 30
+    }
     
     @Binding var currentSeason: String
     @Binding var date: String
@@ -19,18 +29,24 @@ struct SeasonView: View {
     var body: some View {
         VStack{
             HStack {
-                Text(sectionTitle)
+                Text(K.sectionTitle)
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(ProjectColors.algaeGreen.color.toSwiftUIColor())
                 Spacer()
             }
             .padding(.leading, MarginSpaces.horizontalMargin.space)
-            HStack(spacing: 30) {
-                Rectangle()
-                    .foregroundColor(ProjectColors.algaeGreen.color.toSwiftUIColor())
-                    .frame(height: 220)
-                VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: K.spacingImageButton) {
+                    AnimatedImage(url: URL(string: poster))
+                        .placeholder(UIImage(named:K.placeholderImage))
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .foregroundColor(ProjectColors.algaeGreen.color.toSwiftUIColor())
+                        .frame(maxWidth: MarginSpaces.sizeWidthScreen.space / K.imageWidthDivider)
+                        .frame(height: K.imageHeight)
+                        .clipped()
+                
+                VStack(alignment: .leading, spacing: K.spacingDateButton) {
                     Text(currentSeason)
                         .font(.subheadline)
                         .fontWeight(.semibold)
@@ -48,10 +64,10 @@ struct SeasonView: View {
     private var buttonSeason: some View {
         Button(action: {}) {
             ZStack {
-                RoundedRectangle(cornerRadius: 5)
-                    .frame(height: 30)
+                RoundedRectangle(cornerRadius: K.buttonRoundCorners)
+                    .frame(height: K.buttonHeight)
                 .foregroundColor(ProjectColors.algaeGreen.color.toSwiftUIColor())
-                Text(buttonText)
+                Text(K.buttonText)
                     .font(.caption)
                     .foregroundColor(ProjectColors.white.color.toSwiftUIColor())
             }
