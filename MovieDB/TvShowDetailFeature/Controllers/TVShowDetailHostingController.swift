@@ -10,6 +10,16 @@ import SwiftUI
 
 final class TVShowDetailViewModel {
     
+//    var service: TVShowService<TVShowDetails>
+//    var id: Int
+//    var detailsTVShow: TVShowDetails?
+//    
+//    init(service: TVShowService<TVShowDetails>, id: Int) {
+//        self.service = service
+//        self.id = id
+//    }
+//    
+//    private func getDetailsTvShow() {}
 }
 
 class TVShowDetailHostingController: UIViewController {

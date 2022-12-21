@@ -16,16 +16,16 @@ protocol TVShowFeedControllerViewModelProtocol {
 
 final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
     
-    var listTVShows = [TVShowFeedViewModelProtocol]()
-    private var service: TVShowService<TVShowList>
-    var section = BehaviorRelay<(category:TVShowsFeed, page: Int)>(value: (category: .popular, page: 1))
-    static var listTVShowsPublisher = BehaviorRelay<[TVShowFeedCellViewModel]>(value: [])
-    var state = BehaviorRelay<State>(value: .waiting)
-    var amountItems = BehaviorRelay<Int>(value: 19)
+    private var service: TVShowListService
+    var section = BehaviorRelay<Int>(value: 1)
+    private var listTVShows = [TVShowFeedCellViewModel]()
     
-    init(service: TVShowService<TVShowList>, category: TVShowsFeed) {
+    var currentTVShowItems: Int {
+        listTVShows.count
+    }
+    
+    init(service: TVShowListService) {
         self.service = service
-        self.section.accept((category: category, page: 1))
     }
     
     enum State {
@@ -34,16 +34,16 @@ final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
     }
     
     struct Input {
-        let viewDidLoad: Observable<Void>
-        let didScrollTVShows: ControlEvent<Bool>
+        let viewDidLoad: Driver<Void>
+        let didScrollTVShows: Driver<State>
     }
     
     struct Output {
         let loadTVShows: Driver<[TVShowFeedCellViewModel]>
     }
     
-    func deliverListViewModels(endpoint: Endpoint, page: Int) -> Driver<[TVShowFeedCellViewModel]> {
-        return getItemsFromService(endpoint: endpoint, page: page)
+    func deliverListViewModels(page: Int) -> Driver<[TVShowFeedCellViewModel]> {
+        return getItemsFromService(page: page)
             .map { [weak self] shows in
                 let tvShows = shows.map { TVShowFeedCellViewModel(tvShow: $0)}
                 self?.updateStateandIncrementList(tvShow: tvShows)
@@ -52,47 +52,44 @@ final class TVShowCollectionViewModel: TVShowFeedControllerViewModelProtocol {
             .asDriver(onErrorJustReturn: [])
     }
     
-    func updateStateandIncrementList(tvShow: [TVShowFeedCellViewModel]) {
-        TVShowCollectionViewModel.listTVShowsPublisher.accept(TVShowCollectionViewModel.listTVShowsPublisher.value + tvShow)
-        state.accept(.waiting)
-    }
-    
-    func incrementPage() {
-        section.accept((category: section.value.category, page: section.value.page + 1))
-        amountItems.accept(19 * section.value.page)
-    }
-
-    func getItemsFromService(endpoint: Endpoint, page: Int) -> PrimitiveSequence<SingleTrait, [TVShow]> {
+    func getItemsFromService(page: Int) -> PrimitiveSequence<SingleTrait, [TVShow]> {
         return service
-            .getItems(endpoint: endpoint, page: page)
+            .getItems(page: page)
             .map { $0.results }
     }
     
+    func updateStateandIncrementList(tvShow: [TVShowFeedCellViewModel]) {
+        listTVShows.append(contentsOf: tvShow)
+    }
+    
+    func incrementPage() {
+        section.accept(section.value + 1)
+    }
+
     func transform(input: Input) -> Output {
-        let viewDidLoad = input.viewDidLoad.asDriver(onErrorJustReturn: ())
+        let viewDidLoad = input.viewDidLoad
 
         let loadShows = viewDidLoad
             .withLatestFrom(section.asDriver())
-            .compactMap { [weak self] tvShowFeed in
-                self?.deliverListViewModels(endpoint: tvShowFeed.category, page: tvShowFeed.page)
+            .flatMap { [weak self] page -> Driver<[TVShowFeedCellViewModel]> in
+                guard let self = self else { return Driver.empty() }
+                return self.deliverListViewModels(page: page)
             }
-            .flatMap { $0.map { $0 } }
-            .asDriver(onErrorJustReturn: [])
         
-        let checkingState = state.asDriver()
+        let checkingState = input.didScrollTVShows
             .filter { $0 == .loading }
-            .withLatestFrom(section.asDriver())
-            .map { [weak self] tvShowFeed in
+            .map { [weak self] _ in
                 self?.incrementPage()
             }
         
         let addingShowForPagination = checkingState
             .withLatestFrom(section.asDriver())
-            .compactMap { [weak self] tvShowFeed in
-                self?.deliverListViewModels(endpoint: tvShowFeed.category, page: tvShowFeed.page)
-                    .map { TVShowCollectionViewModel.listTVShowsPublisher.value + $0 }
-            }.flatMap { $0.map { $0.removeDuplicates() } }
-            .asDriver(onErrorJustReturn: [])
+            .flatMap { [weak self] page -> Driver<[TVShowFeedCellViewModel]> in
+                guard let self = self else { return Driver.empty() }
+                return self.deliverListViewModels(page: page)
+                    .map { _ in self.listTVShows }
+            }
+            
   
         let allTVShow = Driver.merge(loadShows, addingShowForPagination)
 

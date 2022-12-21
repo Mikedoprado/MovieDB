@@ -31,6 +31,7 @@ extension Endpoint {
             components.queryItems = [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "language", value: "en-US"),
+                URLQueryItem(name: "page", value: String(page))
             ]
         }
         return components

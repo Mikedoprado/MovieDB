@@ -20,21 +20,22 @@ final class FactoryTVShowFeedController {
         self.service = service
     }
     
-    private func setViewModel(service: TVShowService<TVShowList>, category: TVShowsFeed) -> TVShowCollectionViewModel {
-        return TVShowCollectionViewModel(service: service, category: category)
+    private func setViewModel(service: TVShowListService) -> TVShowCollectionViewModel {
+        return TVShowCollectionViewModel(service: service)
     }
     
-    private func setCollectionViewController(service: TVShowService<TVShowList>, category: TVShowsFeed) -> TVShowsCollectionViewController {
-        let viewModel = setViewModel(service: service, category: category)
+    private func setCollectionViewController(category: TVShowsFeed) -> TVShowsCollectionViewController {
+        let tvShowListservice = TVShowListServiceImpl(endpoint: category, service: service)
+        let viewModel = setViewModel(service: tvShowListservice)
         return TVShowsCollectionViewController(viewModel: viewModel)
     }
     
     func makeViewController() -> UIViewController {
 
-        let popularCollectionViewController = setCollectionViewController(service: service, category: .popular)
-        let topRatedCollectionViewController = setCollectionViewController(service: service, category: .topRated)
-        let onTvCollectionViewController = setCollectionViewController(service: service, category: .tvOnTheAir)
-        let airingTodayCollectionViewController = setCollectionViewController(service: service, category: .airingToday)
+        let popularCollectionViewController = setCollectionViewController(category: .popular)
+        let topRatedCollectionViewController = setCollectionViewController(category: .topRated)
+        let onTvCollectionViewController = setCollectionViewController(category: .tvOnTheAir)
+        let airingTodayCollectionViewController = setCollectionViewController(category: .airingToday)
         
         return TVShowFeedViewController(
             segmentedController: segmentedController,

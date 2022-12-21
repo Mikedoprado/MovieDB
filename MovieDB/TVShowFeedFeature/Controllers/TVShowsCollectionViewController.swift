@@ -16,11 +16,12 @@ final class TVShowsCollectionViewController: UIViewController {
     
     private struct K {
         static let itemHeight: CGFloat = 360
+        static let dividerScreen: CGFloat = 2.3
     }
     
     var collectionView: UICollectionView?
 
-    private let itemLayoutWidth = MarginSpaces.sizeWidthScreen.space / 2.3
+    private let itemLayoutWidth = MarginSpaces.sizeWidthScreen.space / K.dividerScreen
     
     init(viewModel: TVShowCollectionViewModel) {
         self.viewModel = viewModel
@@ -71,7 +72,28 @@ final class TVShowsCollectionViewController: UIViewController {
         setCollectionView()
         guard let collection = collectionView else { return }
         let viewDidLoad = rx.sentMessage(#selector(UIViewController.viewDidLoad)).map { _ in }
-        let input = TVShowCollectionViewModel.Input(viewDidLoad: viewDidLoad, didScrollTVShows: collection.rx.didEndDragging)
+        
+        let didScrollTVShow = collection.rx.didEndDragging
+            .filter { [weak self] (decelerate) in
+                guard let self = self else { return false }
+                let visibleCells = collection.visibleCells
+                if let lastCell = visibleCells.last {
+                    guard let lastCellIndexPath = collection.indexPath(for: lastCell) else { return false }
+                    let visibleIndexPaths = collection.indexPathsForVisibleItems
+                    if visibleIndexPaths.contains(lastCellIndexPath) {
+                        if lastCellIndexPath.item == (self.viewModel.currentTVShowItems - 1) {
+                            return true
+                        }
+                    }
+                }
+                return false
+            }.map { _ in
+                return TVShowCollectionViewModel.State.loading
+            }
+            
+        let input = TVShowCollectionViewModel.Input(
+            viewDidLoad: viewDidLoad.asDriver(onErrorRecover: { _ in return Driver.empty() }),
+            didScrollTVShows: didScrollTVShow.asDriver(onErrorRecover: { _ in return Driver.empty() }))
         let output = viewModel.transform(input: input)
         setBinds(output: output, collection: collection)
     }
@@ -85,26 +107,8 @@ final class TVShowsCollectionViewController: UIViewController {
         collection.rx
             .modelSelected(TVShowFeedCellViewModel.self)
             .subscribe(onNext: { tvShow in
-                print(tvShow.id)
+                
             }).disposed(by: disposeBag)
-        
-        collection.rx.didEndDragging
-            .subscribe(onNext: { [weak self] (decelerate) in
-                guard let self = self else { return }
-                let visibleCells = collection.visibleCells
-                if let lastCell = visibleCells.last {
-                    guard let lastCellIndexPath = collection.indexPath(for: lastCell) else { return }
-                    let visibleIndexPaths = collection.indexPathsForVisibleItems
-                    if visibleIndexPaths.contains(lastCellIndexPath) {
-                        if lastCellIndexPath.item == (TVShowCollectionViewModel.listTVShowsPublisher.value.count - 1) {
-                            print(TVShowCollectionViewModel.listTVShowsPublisher.value.count)
-                            print(self.viewModel.section.value.page)
-                            self.viewModel.state.accept(.loading)
-                        }
-                    }
-                }
-            })
-            .disposed(by: disposeBag)
     }
     
     private func setUI() {

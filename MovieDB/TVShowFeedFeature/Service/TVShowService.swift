@@ -10,8 +10,12 @@ import RxSwift
 import Combine
 import RxCocoa
 
-final class TVShowService<T: Decodable> {
+protocol TVShowListService {
+    func getItems(page: Int) -> Single<TVShowList>
+}
 
+final class TVShowService<T: Decodable> {
+    
     let client: HTTPClient
     
     init(client: HTTPClient) {
