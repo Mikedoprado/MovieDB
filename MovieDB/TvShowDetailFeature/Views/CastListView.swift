@@ -26,7 +26,7 @@ struct CastListView: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(alignment: .center, spacing: 20) {
-                    ForEach($arrayPerson, id: \.name) { person in
+                    ForEach($arrayPerson, id: \.id) { person in
                         PersonView(name: person.name, profilePicture: person.profilePicture)
                     }
                 }
@@ -40,15 +40,15 @@ struct CastListView: View {
 struct CastListView_Previews: PreviewProvider {
     
     static var arrayPerson: [Person] = [
-        Person(name: "mike", profilePath: ""),
-        Person(name: "andres", profilePath: ""),
-        Person(name: "gustavo", profilePath: ""),
-        Person(name: "rodolfo", profilePath: ""),
-        Person(name: "manuel", profilePath: ""),
-        Person(name: "stella", profilePath: ""),
-        Person(name: "renato", profilePath: ""),
-        Person(name: "luiza", profilePath: ""),
-        Person(name: "Lourdinha", profilePath: "")
+        Person(id: 1, name: "mike", profilePath: ""),
+        Person(id: 2, name: "andres", profilePath: ""),
+        Person(id: 3,name: "gustavo", profilePath: ""),
+        Person(id: 4,name: "rodolfo", profilePath: ""),
+        Person(id: 5,name: "manuel", profilePath: ""),
+        Person(id: 6,name: "stella", profilePath: ""),
+        Person(id: 7,name: "renato", profilePath: ""),
+        Person(id: 8,name: "luiza", profilePath: ""),
+        Person(id: 9,name: "Lourdinha", profilePath: "")
     ]
     static var arrayPersonViewModel = arrayPerson.map { PersonViewModel(person: $0) }
     static var previews: some View {

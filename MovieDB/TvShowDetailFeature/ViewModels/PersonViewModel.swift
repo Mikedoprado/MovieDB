@@ -8,11 +8,12 @@
 import Combine
 import SwiftUI
 
-final class PersonViewModel: ObservableObject {
+final class PersonViewModel: ObservableObject, Identifiable {
     
     @Published var person: Person
     @Published var name: String = ""
     @Published var profilePicture: String = ""
+    @Published var id: String = ""
     private var cancellables = Set<AnyCancellable>()
 
     init(person: Person) {
@@ -31,5 +32,12 @@ final class PersonViewModel: ObservableObject {
             .sink { [weak self] image in
                 self?.profilePicture = image
             }.store(in: &cancellables)
+        
+        $person
+            .map { $0.id }
+            .sink { [weak self] value in
+                self?.id = String(describing: value)
+            }
+            .store(in: &cancellables)
     }
 }
