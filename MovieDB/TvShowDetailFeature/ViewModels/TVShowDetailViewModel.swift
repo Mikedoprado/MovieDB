@@ -93,16 +93,6 @@ final class TVShowDetailViewModel: ObservableObject {
             .sink { [weak self] image in
                 self?.backDropPath = image
             }.store(in: &cancellables)
-        
-        
-        $lastSeasonAirDate
-            .filter { $0.isEmpty }
-            .zip($tvShowDetails)
-            .compactMap { $1?.seasons[($1?.seasons.count ?? 0) - 2].airDate?.toDate() }
-            .receive(on: RunLoop.main)
-            .sink { [weak self] date in
-                self?.lastSeasonAirDate = date
-            }.store(in: &cancellables)
 
     }
     
