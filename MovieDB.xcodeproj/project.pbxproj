@@ -41,6 +41,7 @@
 		FD72AE62294E267300FED13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD72AE61294E267300FED13A /* SceneDelegate.swift */; };
 		FD72AE69294E267400FED13A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD72AE68294E267400FED13A /* Assets.xcassets */; };
 		FD72AE6C294E267400FED13A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD72AE6A294E267400FED13A /* LaunchScreen.storyboard */; };
+		FD7677EC2954095900742B7C /* FactoryTVShowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7677EB2954095900742B7C /* FactoryTVShowDetail.swift */; };
 		FD791808294F73120037D0DB /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791807294F73120037D0DB /* TVShow.swift */; };
 		FD79180A294F79310037D0DB /* TVShowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD791809294F79310037D0DB /* TVShowDetails.swift */; };
 		FD79180C294F794B0037D0DB /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79180B294F794B0037D0DB /* Creator.swift */; };
@@ -135,6 +136,7 @@
 		FD72AE6B294E267400FED13A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD72AE6D294E267400FED13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD72AE72294E267400FED13A /* MovieDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD7677EB2954095900742B7C /* FactoryTVShowDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTVShowDetail.swift; sourceTree = "<group>"; };
 		FD791807294F73120037D0DB /* TVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
 		FD791809294F79310037D0DB /* TVShowDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetails.swift; sourceTree = "<group>"; };
 		FD79180B294F794B0037D0DB /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
@@ -242,7 +244,6 @@
 		FD2490EF2950916A0080CECB /* TVShowFeedFeature */ = {
 			isa = PBXGroup;
 			children = (
-				FD3EAAE4295345CD00380A28 /* Navigator */,
 				FD7D19DF295237F6002006F0 /* Factory */,
 				FD249115295106900080CECB /* Service */,
 				FD24910B2950BBEE0080CECB /* ViewModels */,
@@ -360,6 +361,7 @@
 				FD72AE5F294E267300FED13A /* AppDelegate.swift */,
 				FD72AE61294E267300FED13A /* SceneDelegate.swift */,
 				FD2491032950B39C0080CECB /* Helpers */,
+				FD3EAAE4295345CD00380A28 /* Navigator */,
 				FD2490EF2950916A0080CECB /* TVShowFeedFeature */,
 				FD976B9C294FE5FD002B9ACC /* TvShowDetailFeature */,
 				FD791819294F7D740037D0DB /* Extensions */,
@@ -383,6 +385,14 @@
 				FD7D19EC2952AD1D002006F0 /* TVShowsCollectionViewControllerTest.swift */,
 			);
 			path = MovieDBTests;
+			sourceTree = "<group>";
+		};
+		FD7677EA2954094600742B7C /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FD7677EB2954095900742B7C /* FactoryTVShowDetail.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		FD791806294F72FF0037D0DB /* Models */ = {
@@ -456,6 +466,7 @@
 		FD976B9C294FE5FD002B9ACC /* TvShowDetailFeature */ = {
 			isa = PBXGroup;
 			children = (
+				FD7677EA2954094600742B7C /* Factory */,
 				FD50D1F62953BBCB00711C72 /* Service */,
 				FD3EAAE72953503300380A28 /* ViewModels */,
 				FD154C322951277E00ED58C7 /* Controllers */,
@@ -730,6 +741,7 @@
 				FD79181B294F7D890037D0DB /* UIView+Constraints.swift in Sources */,
 				FD7D19E529525C62002006F0 /* String+Empty.swift in Sources */,
 				FD7D19DE29520EC3002006F0 /* String+TransfomToDate.swift in Sources */,
+				FD7677EC2954095900742B7C /* FactoryTVShowDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
