@@ -10,7 +10,7 @@ import Foundation
 struct Season: Decodable {
     var posterPath: String?
     var seasonNumber: Int
-    var airDate: String
+    var airDate: String?
     var name: String
     
     private enum CodingKeys : String, CodingKey {

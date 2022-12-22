@@ -48,7 +48,7 @@ final class TVShowDetailViewModel: ObservableObject {
         $tvShowDetails
             .compactMap { $0?.createdBy }
             .map {  $0.map { $0.name }}
-            .map { $0.joined(separator: " ") }
+            .map { $0.joined(separator: ", ") }
             .receive(on: RunLoop.main)
             .sink { [weak self] value in
                 self?.creators = value.isEmpty ? "" : "Created by \(value)"
@@ -63,8 +63,8 @@ final class TVShowDetailViewModel: ObservableObject {
             }.store(in: &cancellables)
         
         $tvShowDetails
-            .compactMap { $0?.seasons }
-            .compactMap { $0.last?.airDate.toDate() }
+            .compactMap { $0?.seasons.compactMap { $0.airDate } }
+            .map { $0.last ?? "" }
             .receive(on: RunLoop.main)
             .sink { [weak self] date in
                 self?.lastSeasonAirDate = date
@@ -79,8 +79,9 @@ final class TVShowDetailViewModel: ObservableObject {
             }.store(in: &cancellables)
         
         $tvShowDetails
-            .compactMap { $0?.seasons.last }
-            .map { $0.posterPath == nil ? "notFoundImage" : ApiPath.baseURLImage.path + ($0.posterPath ?? "") }
+            .compactMap { $0?.seasons.compactMap { $0.posterPath }}
+            .map { $0.last ?? "" }
+            .map { ApiPath.baseURLImage.path + $0 }
             .receive(on: RunLoop.main)
             .sink { [weak self] image in
                 self?.poster = image
@@ -92,6 +93,17 @@ final class TVShowDetailViewModel: ObservableObject {
             .sink { [weak self] image in
                 self?.backDropPath = image
             }.store(in: &cancellables)
+        
+        
+        $lastSeasonAirDate
+            .filter { $0.isEmpty }
+            .zip($tvShowDetails)
+            .compactMap { $1?.seasons[($1?.seasons.count ?? 0) - 2].airDate?.toDate() }
+            .receive(on: RunLoop.main)
+            .sink { [weak self] date in
+                self?.lastSeasonAirDate = date
+            }.store(in: &cancellables)
+
     }
     
     private func getDetailsTvShow() {
@@ -107,6 +119,7 @@ final class TVShowDetailViewModel: ObservableObject {
                     print(ApiError.responseUnsuccesful)
                 }
             } receiveValue: { [weak self] details in
+                print(details)
                 self?.tvShowDetails = details
             }.store(in: &cancellables)
     }
